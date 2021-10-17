@@ -24,5 +24,89 @@ namespace AutoCoder
         {
             InitializeComponent();
         }
+
+        //Command Events
+
+        public bool New()
+        {
+
+            return true;
+        }
+
+        public bool Save()
+        {
+
+            return true;
+        }
+
+        public bool Load()
+        {
+
+            return true;
+        }
+
+        public bool OpenVarManager()
+        {
+
+            return true;
+        }
+
+        public bool AddExec()
+        {
+
+            return true;
+        }
+
+        public bool OpenFuncManager()
+        {
+
+            return true;
+        }
+
+        public bool DelExec()
+        {
+
+            return true;
+        }
+
+        //UI Events
+
+        private void B_Clicked(object sender, RoutedEventArgs e)
+        {
+            Button BCurrent = (Button)sender;
+            switch (BCurrent.Name)
+            {
+                case "B_New":
+                    this.New();
+                    break;
+
+                case "B_Save":
+                    this.Save();
+                    break;
+
+                case "B_Load":
+                    this.Load();
+                    break;
+
+                case "B_01vm":
+                    this.OpenVarManager();
+                    break;
+
+                case "B_02ae":
+                    this.AddExec();
+                    break;
+
+                case "B_03fm":
+                    this.OpenFuncManager();
+                    break;
+
+                case "B_04de":
+                    this.DelExec();
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }
