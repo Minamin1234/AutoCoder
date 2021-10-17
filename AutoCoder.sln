@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCoder", "AutoCoder\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingLib", "CodingLib\CodingLib.csproj", "{D3B235DF-9161-4278-AA44-EE2A49AE725C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{E2F783F8-D349-4E9C-B3CB-A7A639413D86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D3B235DF-9161-4278-AA44-EE2A49AE725C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B235DF-9161-4278-AA44-EE2A49AE725C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B235DF-9161-4278-AA44-EE2A49AE725C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
