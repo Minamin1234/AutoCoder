@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCoder", "AutoCoder\AutoCoder.csproj", "{96951443-FFFB-4F93-8AA9-66D96B429E56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingLib", "CodingLib\CodingLib.csproj", "{D3B235DF-9161-4278-AA44-EE2A49AE725C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingLib", "CodingLib\CodingLib.csproj", "{D3B235DF-9161-4278-AA44-EE2A49AE725C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{E2F783F8-D349-4E9C-B3CB-A7A639413D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{E2F783F8-D349-4E9C-B3CB-A7A639413D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_WPF", "Test_WPF\Test_WPF.csproj", "{7D486005-BAC1-4A08-9574-07FB87775F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2F783F8-D349-4E9C-B3CB-A7A639413D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D486005-BAC1-4A08-9574-07FB87775F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D486005-BAC1-4A08-9574-07FB87775F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D486005-BAC1-4A08-9574-07FB87775F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D486005-BAC1-4A08-9574-07FB87775F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
