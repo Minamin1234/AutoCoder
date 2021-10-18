@@ -20,6 +20,9 @@ namespace Test_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Window W_FuncManage;
+        public FuncSetting W_FuncSetting;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -59,7 +62,8 @@ namespace Test_WPF
 
         public bool OpenFuncManager()
         {
-
+            this.W_FuncSetting = new FuncSetting();
+            this.W_FuncSetting.Show();
             return true;
         }
 
