@@ -27,8 +27,28 @@ namespace AutoCoder
 
         public WFuncSetting(MainWindow Handler)
         {
+            InitializeComponent();
             WHandler = Handler;
             this.Show();
+        }
+
+        private void Clicked(object sender, RoutedEventArgs e)
+        {
+            Button BCurrent = (Button)sender;
+
+            switch(BCurrent.Name)
+            {
+                case "B_ok":
+                    this.Close();
+                    this.WHandler.W_FuncSetting = null;
+                    break;
+
+                case "B_cancel":
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

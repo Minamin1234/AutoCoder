@@ -20,6 +20,9 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        public WVarSetting W_VarSetting;
+        public WFuncSetting W_FuncSetting;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +50,7 @@ namespace AutoCoder
 
         public bool OpenVarManager()
         {
-
+            this.W_VarSetting = new WVarSetting(this);
             return true;
         }
 
@@ -59,7 +62,7 @@ namespace AutoCoder
 
         public bool OpenFuncManager()
         {
-
+            this.W_FuncSetting = new WFuncSetting(this);
             return true;
         }
 
