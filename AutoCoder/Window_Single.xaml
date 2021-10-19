@@ -1,0 +1,17 @@
+﻿<Window x:Class="AutoCoder.Window_Single"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCoder"
+        mc:Ignorable="d"
+        Title="Window_Single" Height="450" Width="800" WindowStyle="None">
+    <Grid>
+        <Button x:Name="B_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="578,403,0,0" VerticalAlignment="Top" Width="100" FontSize="18" Height="30"/>
+        <Button x:Name="B_ok" Content="OK" HorizontalAlignment="Left" Margin="683,403,0,0" VerticalAlignment="Top" Width="100" FontSize="18" Height="30"/>
+        <ListBox x:Name="LB_list01" HorizontalAlignment="Left" Height="183" Margin="10,215,0,0" VerticalAlignment="Top" Width="773"/>
+        <TextBlock x:Name="T_subtitle" HorizontalAlignment="Left" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="773"><Run Text="[1]"/><Run Text="SubTitle"/><Run Text="1"/></TextBlock>
+        <TextBlock x:Name="T_title" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" Width="773"><Run Text="[0]"/><Run Text="Title"/></TextBlock>
+
+    </Grid>
+</Window>
