@@ -1,4 +1,111 @@
-﻿-CodeBoxClass
-	-FunctionBox
-	-VariableBox
-	-StateBlockBox
+﻿//BodyClass 
+-AutoCoder //メインのプログラム。
+	-Coder //コード生成のプログラムクラス。
+	-MainWindow //メインウィンドウ
+		-VariableManager //変数の管理用ウィンドウクラス。
+			-VariableSettingWindow //変数の設定用ウィンドウクラス。
+		-FunctionManager //関数の管理用ウィンドウクラス。
+			-FunctionSettngWindow //関数の設定用ウィンドウクラス。
+
+//DataClass 
+-CodeBlockClass //ユーザが構成したコード一つ一つの要素クラス。基底クラス。
+	-UsingBlock //
+	-ExpressionBlock //式要素
+	-StatementExpBlock //条件式要素
+	-FunctionBlock //関数要素
+	-VariableBlock //変数要素
+	-ClassBlock //クラス要素
+	-StateBlock //条件分岐ブロック要素。
+	-LoopBlock //反復ブロック要素。
+	-SourceCode //これらのコード要素をまとめるクラス。
+
+-CodeBoxClass
+	-UsingBox //
+	-NameSpaceBox //
+	-FunctionBox //
+
+----------------------------------------------------------------------------------------------------------------
+
+・AutoCoder
+	・コード生成機能
+	・UI（ウィンドウ）
+	・生成したコードの出力、保存。（エクスポート）
+	・プロジェクトファイルの保存。
+	・プロジェクトファイルから読み込み、復元。
+
+・Coder
+	・コード生成機能。言語の選択が可能。
+
+・MainWindow
+	・起動時のウィンドウ。ソースコードの作成など。
+
+・	VarManager
+	・変数の作成、作成済みの変数の参照、編集。
+	・ローカル変数、メンバ変数共通機能。（それぞれで独立）
+
+・FuncManager
+	・関数の定義（作成）、定義済みの変数の参照、編集。
+	・main、メンバ関数共通機能。（それぞれで独立）
+
+・VarSettingWindow
+	・変数設定の画面。入力した設定内容をVarManagerに反映させる。
+
+・FuncSettingWindow
+	・関数定義、設定の画面。入力した設定内容をFuncManagerに反映させる。
+
+
+・CodeBoxClass
+	・コード要素の基底クラス。子クラスの内容からソースコード生成の機能を持つ。
+
+・ExpressionBox
+	・値、演算子で構成されたボックス。
+	・四則演算（＋ー＊/、＝）
+	・剰余演算
+	・変数参照
+
+・StatementBox
+	・比較演算子で構成された条件式。
+		・大小の比較　＞＜
+		・以上以下　＜＝　＞＝
+		・等しい　＝＝
+		・等しくない　！＝
+		・反転　！
+	・言語毎の構文
+
+・FunctionBox
+	・アクセスレベル
+	・戻り値
+	・関数名
+	・引数
+	・処理のリスト
+	・関数を定義する言語毎の構文
+
+・VariableBox
+	・アクセスレベル	
+		・public
+		・private
+		・ローカル変数
+	・型
+		・int...
+		・auto(var)
+	・値、初期値
+		・	auto(var)の場合は必ず初期値を入れなければならない。
+	・変数を構成する言語毎の構文
+
+・ClassBox
+	・ユーザによって定義されるクラス。
+	・クラス名
+	・アクセスレベル
+	・コンストラクタ処理のリスト（FunctionBoxのリスト）
+	・FunctionBoxのリスト
+	・VariableBoxのリスト
+	・クラスを構成する言語毎の構文
+
+・StateBlockBox
+	・条件式
+	・条件式から実行する処理リスト(FunctionBox)を選択する。
+	・条件分岐の種類
+		・if
+		・if-else
+		・switch-case
+	・条件分岐を構成する言語毎の構文
