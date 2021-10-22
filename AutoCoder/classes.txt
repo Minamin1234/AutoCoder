@@ -6,10 +6,14 @@
 			-VariableSettingWindow //変数の設定用ウィンドウクラス。
 		-FunctionManager //関数の管理用ウィンドウクラス。
 			-FunctionSettngWindow //関数の設定用ウィンドウクラス。
+		-ClassManager //
+			-ClassSettingWindow //
+		-UsingManager //
+			-UsingSettingWindow //
 
 //DataClass 
 -CodeBlockClass //ユーザが構成したコード一つ一つの要素クラス。基底クラス。
-	-UsingBlock //
+	-UsingBlock //インポートするライブラリ要素
 	-ExpressionBlock //式要素
 	-StatementExpBlock //条件式要素
 	-FunctionBlock //関数要素
@@ -17,13 +21,18 @@
 	-ClassBlock //クラス要素
 	-StateBlock //条件分岐ブロック要素。
 	-LoopBlock //反復ブロック要素。
-	-SourceCode //これらのコード要素をまとめるクラス。
+	
 
 -CodeBoxClass
 	-UsingBox //
 	-NameSpaceBox //
 	-FunctionBox //
+	-SourceBox //最終的のコードブロック、ボックス要素をまとめるクラス。
 
+・ボックス
+	・リスト。まとめるもの
+・ブロック
+	・一つ一つの要素。ひとまとまり。
 ----------------------------------------------------------------------------------------------------------------
 
 ・AutoCoder
@@ -54,10 +63,14 @@
 	・関数定義、設定の画面。入力した設定内容をFuncManagerに反映させる。
 
 
-・CodeBoxClass
+・CodeBlockClass
 	・コード要素の基底クラス。子クラスの内容からソースコード生成の機能を持つ。
 
-・ExpressionBox
+・UsingBlock
+	・インポートするライブラリを指定する。
+	・ライブラリ候補を表示する。
+
+・ExpressionBlock
 	・値、演算子で構成されたボックス。
 	・四則演算（＋ー＊/、＝）
 	・剰余演算
@@ -72,15 +85,16 @@
 		・反転　！
 	・言語毎の構文
 
-・FunctionBox
+・FunctionBlock
 	・アクセスレベル
 	・戻り値
 	・関数名
-	・引数
+	・引数（配列）
 	・処理のリスト
+	・値を返す
 	・関数を定義する言語毎の構文
 
-・VariableBox
+・VariableBlock
 	・アクセスレベル	
 		・public
 		・private
@@ -92,7 +106,7 @@
 		・	auto(var)の場合は必ず初期値を入れなければならない。
 	・変数を構成する言語毎の構文
 
-・ClassBox
+・ClassBlock
 	・ユーザによって定義されるクラス。
 	・クラス名
 	・アクセスレベル
@@ -101,11 +115,45 @@
 	・VariableBoxのリスト
 	・クラスを構成する言語毎の構文
 
-・StateBlockBox
+・StateBlock
 	・条件式
-	・条件式から実行する処理リスト(FunctionBox)を選択する。
+	・条件式から実行する処理ボックス(FunctionBox)を選択する。
 	・条件分岐の種類
 		・if
 		・if-else
 		・switch-case
+		・三項演算子 ? :
 	・条件分岐を構成する言語毎の構文
+
+・LoopBlock
+	・変数の初期化
+	・条件式
+	・変数の増分
+	・繰り返し処理する処理ボックス
+	・breakによる繰り返し処理の中断
+	・言語ごとの構文
+
+
+・CodeBoxClass
+	・ブロック要素をまとめるクラス。基底クラス。
+
+・UsingBox
+	・インポートするライブラリのブロックをまとめるクラス。
+
+・NameSpaceBox
+	・この中にブロック、ボックス要素を追加すると、
+		指定した名称内で定義する。
+
+・FunctionBox
+	・関数ブロックのまとまり。
+
+・SourceBox
+	・コードブロック、コードボックス（リスト）をすべてまとめる
+
+------------------------------------------------------------------------------------------------------
+
+MainWindow
+	->FunctionManager
+		->SourceBox
+	->VariableManager
+		->SourceBox
