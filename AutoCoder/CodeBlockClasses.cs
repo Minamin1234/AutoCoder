@@ -97,6 +97,14 @@ namespace AutoCoder
         }
     }
 
+    public class MethodBlock : FunctionBlock
+    {
+        public MethodBlock()
+        {
+
+        }
+    }
+
     public class VariableBlock : CodeBlockClass
     {
         public VariableBlock()

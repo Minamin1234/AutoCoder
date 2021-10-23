@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Collections.ObjectModel;
+
 namespace AutoCoder
 {
     /// <summary>
@@ -28,9 +30,16 @@ namespace AutoCoder
         public FunctionBox CurrentFunctionBox;
         public SourceBox CurrentSourceBox;
 
+        public ObservableCollection<NamespaceBox> CItems;
         public MainWindow()
         {
             InitializeComponent();
+            this.CItems = new ObservableCollection<NamespaceBox>();
+            foreach(NamespaceBox o in Namespaces)
+            {
+                this.CItems.Add(o);
+            }
+            this.CB_currentnamespace.ItemsSource = this.CItems;
         }
 
         //Command Events

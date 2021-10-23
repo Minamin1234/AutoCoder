@@ -10,7 +10,7 @@ namespace AutoCoder
     {
         public VariableManager()
         {
-
+            
         }
     }
 }
