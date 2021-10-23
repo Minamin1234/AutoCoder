@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="CodeBlockClasses.cs" />
     <Compile Include="CodeBoxClasses.cs" />
+    <Compile Include="VariableManager.cs" />
     <Compile Include="WClassSetting.xaml.cs">
       <DependentUpon>WClassSetting.xaml</DependentUpon>
     </Compile>

@@ -10,6 +10,8 @@
 			-ClassSettingWindow //
 		-UsingManager //
 			-UsingSettingWindow //
+		-NamespaceManager
+			-NamespaceSettingWindow
 
 //DataClass 
 -CodeBlockClass //ユーザが構成したコード一つ一つの要素クラス。基底クラス。
@@ -17,6 +19,7 @@
 	-ExpressionBlock //式要素
 	-StatementExpBlock //条件式要素
 	-FunctionBlock //関数要素
+		-MethodBlock //定義済みの関数メゾット
 	-VariableBlock //変数要素
 	-ClassBlock //クラス要素
 	-StateBlock //条件分岐ブロック要素。
@@ -93,6 +96,11 @@
 	・処理のリスト
 	・値を返す
 	・関数を定義する言語毎の構文
+	・定義済みの関数を呼び出す為のメゾットブロック。
+
+・MethodBlock
+	・定義されたFunctionBlock
+	・定義済みの関数を呼び出す為の言語毎の構文
 
 ・VariableBlock
 	・アクセスレベル	
@@ -157,3 +165,5 @@ MainWindow
 		->SourceBox
 	->VariableManager
 		->SourceBox
+	->NamespaceManager
+		

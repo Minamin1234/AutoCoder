@@ -33,6 +33,7 @@ namespace AutoCoder
 
     public class FunctionBox : CodeBoxClass
     {
+        public Function[] Tasks;
         public FunctionBox()
         {
 

@@ -23,6 +23,11 @@ namespace AutoCoder
         public WVarSetting W_VarSetting;
         public WFuncSetting W_FuncSetting;
 
+        public NamespaceBox CurrentNamespaceBox;
+        public NamespaceBox[] Namespaces;
+        public FunctionBox CurrentFunctionBox;
+        public SourceBox CurrentSourceBox;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -110,6 +115,12 @@ namespace AutoCoder
                 default:
                     break;
             }
+        }
+
+        private void CB_Closed(object sender, ContextMenuEventArgs e)
+        {
+            ComboBox current = (ComboBox)sender;
+            
         }
     }
 }
