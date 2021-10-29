@@ -105,7 +105,20 @@ namespace AutoCoder
         }
     }
 
-    public class VariableBlock : CodeBlockClass
+    public class Variable : CodeBoxClass
+    {
+        public string VariableName = "";
+        public FAccessLevel AccessLevel = FAccessLevel.Private;
+        public Type VariableType;
+        public string InitialValue;
+
+        public Variable()
+        {
+
+        }
+    }
+
+    public class VariableBlock : Variable
     {
         public VariableBlock()
         {
@@ -115,6 +128,11 @@ namespace AutoCoder
 
     public class ClassBlock : CodeBlockClass
     {
+        public string ClassName = "";
+        public Function[] Constructor;
+        public Function[] MemberFunctions;
+        public Variable[] MemberVariables;
+
         public ClassBlock()
         {
 

@@ -40,6 +40,15 @@ namespace AutoCoder
         }
     }
 
+    public class MainFunctionBox : CodeBoxClass
+    {
+        public Function[] MainFunctions;
+        public MainFunctionBox()
+        {
+
+        }
+    }
+
     public class FunctionBox : CodeBoxClass
     {
         public Function[] Tasks;

@@ -57,12 +57,16 @@
     </ApplicationDefinition>
     <Compile Include="CodeBlockClasses.cs" />
     <Compile Include="CodeBoxClasses.cs" />
+    <Compile Include="NamespaceManager.cs" />
     <Compile Include="VariableManager.cs" />
     <Compile Include="WClassSetting.xaml.cs">
       <DependentUpon>WClassSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="WFuncSetting.xaml.cs">
       <DependentUpon>WFuncSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WNamespaceSetting.xaml.cs">
+      <DependentUpon>WNamespaceSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="WVarSetting.xaml.cs">
       <DependentUpon>WVarSetting.xaml</DependentUpon>
@@ -84,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WFuncSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WNamespaceSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

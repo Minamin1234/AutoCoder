@@ -29,6 +29,7 @@
 -CodeBoxClass
 	-UsingBox //
 	-NameSpaceBox //
+	-MainFunctionBox //
 	-FunctionBox //
 	-SourceBox //最終的のコードブロック、ボックス要素をまとめるクラス。
 

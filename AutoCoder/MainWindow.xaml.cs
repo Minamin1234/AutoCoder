@@ -22,13 +22,21 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Window
         public WVarSetting W_VarSetting;
         public WFuncSetting W_FuncSetting;
+        public WClassSetting W_ClassSetting;
+        public WNamespaceSetting W_NamespaceSetting;
 
+        //BlocksManager
         public NamespaceBox CurrentNamespaceBox;
         public NamespaceBox[] Namespaces;
         public FunctionBox CurrentFunctionBox;
+        public MainFunctionBox MainFunction;
         public SourceBox CurrentSourceBox;
+
+        //BoxManagers
+        public NamespaceManager NmspMng;
 
         public ObservableCollection<NamespaceBox> CItems;
         public MainWindow()
