@@ -25,6 +25,10 @@ namespace AutoCoder
 
         public bool AddNamespace(NamespaceBox NewNmspBX)
         {
+            foreach(NamespaceBox NmspBX in this.Namespaces)
+            {
+                if (NmspBX.Name == NewNmspBX.Name) return false;
+            }
             this.Namespaces.Append(NewNmspBX);
             return true;
         }

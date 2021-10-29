@@ -99,6 +99,19 @@ namespace AutoCoder
         private void B_Clicked(object sender, RoutedEventArgs e)
         {
             Button BCurrent = (Button)sender;
+            if(BCurrent.Name == B_New.Name)
+            {
+                this.New();
+            }
+            else if(BCurrent.Name == B_Save.Name)
+            {
+                this.Save();
+            }
+            else if(BCurrent.Name == B_Load.Name)
+            {
+                this.Load();
+            }
+
             switch (BCurrent.Name)
             {
                 case "B_New":
@@ -138,6 +151,30 @@ namespace AutoCoder
         {
             ComboBox current = (ComboBox)sender;
             
+            if(current.Name == CB_currentfunc.Name)
+            {
+
+            }
+            else if(current.Name == CB_currentnamespace.Name)
+            {
+                this.CurrentNamespaceBox = this.NmspMng.Namespaces[current.SelectedIndex];
+            }
+
+        }
+
+        private void CB_Opened(object sender, ContextMenuEventArgs e)
+        {
+            ComboBox current = (ComboBox)sender;
+
+            if(current.Name == CB_currentfunc.Name)
+            {
+                
+            }
+            else if(current.Name == CB_currentnamespace.Name)
+            {
+                var NmspList = this.NmspMng.GetNmspList();
+                CB_currentnamespace.ItemsSource = NmspList;
+            }
         }
     }
 }

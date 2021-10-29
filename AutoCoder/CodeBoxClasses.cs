@@ -31,6 +31,7 @@ namespace AutoCoder
 
     public class NamespaceBox : CodeBoxClass
     {
+        public string Name;
         public UsingBox[] Usings;
         public ClassBlock[] Classes;
         public FunctionBlock[] Functions;

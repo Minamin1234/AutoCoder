@@ -65,6 +65,9 @@
     <Compile Include="WFuncSetting.xaml.cs">
       <DependentUpon>WFuncSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WNamespaceManager.xaml.cs">
+      <DependentUpon>WNamespaceManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WNamespaceSetting.xaml.cs">
       <DependentUpon>WNamespaceSetting.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WFuncSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WNamespaceManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

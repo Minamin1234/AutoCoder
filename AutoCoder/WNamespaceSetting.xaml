@@ -8,7 +8,7 @@
         Title="WNamespaceSetting" Height="112.953" Width="750" WindowStyle="None">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="723" Height="25"><Run Text="[0]Preview"/><LineBreak/><Run/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="92,40,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="641" FontSize="18"/>
+        <TextBox x:Name="TB_name" HorizontalAlignment="Left" Height="23" Margin="92,40,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="641" FontSize="18"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="77" Height="25"><Run Text="[0]"/><Run Text="Name:"/><LineBreak/><Run/></TextBlock>
         <Button x:Name="B_ok" Content="OK" HorizontalAlignment="Left" Margin="633,68,0,0" VerticalAlignment="Top" Width="100" Height="30" FontSize="18"/>
         <Button x:Name="B_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="528,68,0,0" VerticalAlignment="Top" Width="100" Height="30" FontSize="18"/>
