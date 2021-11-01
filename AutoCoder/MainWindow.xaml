@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCoder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None">
     <Grid>
-        
+        <Button x:Name="B_save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="129" Height="25" FontSize="16"/>
+        <Button x:Name="B_delvar" Content="Delete Variable" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top" Width="386" Height="25" FontSize="16"/>
+        <ComboBox x:Name="BC_namespace" HorizontalAlignment="Left" Margin="115,42,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
+        <TextBlock x:Name="T_namespace" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="Namespace:" VerticalAlignment="Top" Height="25" FontSize="18" Width="100"/>
+        <TextBlock x:Name="T_function" HorizontalAlignment="Left" Margin="402,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" FontSize="18" Width="96"><Run Text="Function"/><Run Text=":"/></TextBlock>
+        <ComboBox x:Name="CB_function" HorizontalAlignment="Left" Margin="502,42,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
+        <ListBox x:Name="LB_vars" HorizontalAlignment="Left" Height="165" Margin="10,268,0,0" VerticalAlignment="Top" Width="386" Background="#FFD1D1D1"/>
+        <ListBox x:Name="LB_mthds" HorizontalAlignment="Left" Height="165" Margin="401,268,0,0" VerticalAlignment="Top" Width="382" Background="#FFD1D1D1"/>
+        <TextBlock x:Name="T_vars" HorizontalAlignment="Left" Margin="10,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" FontSize="18" Width="386"><Run Text="Variables"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="T_mthds" HorizontalAlignment="Left" Margin="401,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" FontSize="18" Width="382"><Run Text="Methods"/><Run Text=":"/></TextBlock>
+        <Button x:Name="B_delmthd" Content="Delete Method" HorizontalAlignment="Left" Margin="401,207,0,0" VerticalAlignment="Top" Width="382" Height="25" FontSize="16"/>
+        <Button x:Name="B_addmthd" Content="Add method" HorizontalAlignment="Left" Margin="401,177,0,0" VerticalAlignment="Top" Width="382" Height="25" FontSize="16"/>
+        <Button x:Name="B_varmngr" Content="Variable Manager..." HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Width="386" Height="25" FontSize="16"/>
+        <Button x:Name="B_load" Content="Load" HorizontalAlignment="Left" Margin="144,10,0,0" VerticalAlignment="Top" Width="129" Height="25" FontSize="16"/>
+        <Button x:Name="B_new" Content="New" HorizontalAlignment="Left" Margin="278,10,0,0" VerticalAlignment="Top" Width="118" Height="25" FontSize="16"/>
+        <Button x:Name="B_nmspmngr" Content="Namespace Manager..." HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="386" Height="25" FontSize="16"/>
+        <Button x:Name="B_fncnmngr" Content="Function Manager..." HorizontalAlignment="Left" Margin="401,72,0,0" VerticalAlignment="Top" Width="382" Height="25" FontSize="16"/>
+        <TextBlock x:Name="T_class" HorizontalAlignment="Left" Margin="10,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" FontSize="18" Width="100"><Run Text="Class"/><Run Text=":"/></TextBlock>
+        <ComboBox x:Name="CB_cls" HorizontalAlignment="Left" Margin="115,102,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
+        <Button x:Name="B_clsmngr" Content="Class Manager..." HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="386" Height="25" FontSize="16"/>
+
     </Grid>
 </Window>
