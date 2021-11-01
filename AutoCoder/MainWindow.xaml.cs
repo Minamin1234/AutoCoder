@@ -30,7 +30,7 @@ namespace AutoCoder
 
         //BlocksManager
         public NamespaceBox CurrentNamespaceBox;
-        public NamespaceBox[] Namespaces;
+        public NamespaceBox[] Namespaces = { new NamespaceBox() };
         public FunctionBox CurrentFunctionBox;
         public MainFunctionBox MainFunction;
         public SourceBox CurrentSourceBox;
@@ -39,15 +39,18 @@ namespace AutoCoder
         public NamespaceManager NmspMng;
 
         public ObservableCollection<NamespaceBox> CItems;
+
         public MainWindow()
         {
             InitializeComponent();
-            this.CItems = new ObservableCollection<NamespaceBox>();
+            /*this.CItems = new ObservableCollection<NamespaceBox>();
             foreach(NamespaceBox o in Namespaces)
             {
                 this.CItems.Add(o);
             }
             this.CB_currentnamespace.ItemsSource = this.CItems;
+            */
+            this.NmspMng = new NamespaceManager(this);
         }
 
         //Command Events
@@ -111,8 +114,25 @@ namespace AutoCoder
             {
                 this.Load();
             }
+            else if(BCurrent.Name == B_01vm.Name)
+            {
+                this.OpenVarManager();
+            }
+            else if(BCurrent.Name == B_02ae.Name)
+            {
+                this.AddExec();
+            }
+            else if(BCurrent.Name == B_03fm.Name)
+            {
+                this.OpenFuncManager();
+            }
+            else if(BCurrent.Name == B_04de.Name)
+            {
+                this.DelExec();
+            }
 
-            switch (BCurrent.Name)
+
+            /*switch (BCurrent.Name)
             {
                 case "B_New":
                     this.New();
@@ -145,13 +165,14 @@ namespace AutoCoder
                 default:
                     break;
             }
+            */
         }
 
         private void CB_Closed(object sender, ContextMenuEventArgs e)
         {
             ComboBox current = (ComboBox)sender;
-            
-            if(current.Name == CB_currentfunc.Name)
+
+            if (current.Name == CB_currentfunc.Name)
             {
 
             }
@@ -174,6 +195,26 @@ namespace AutoCoder
             {
                 var NmspList = this.NmspMng.GetNmspList();
                 CB_currentnamespace.ItemsSource = NmspList;
+            }
+        }
+
+        private void CB_Closing(object sender, ContextMenuEventArgs e)
+        {
+            MessageBox.Show("Closing");
+        }
+
+        private void GetFocus(object sender, RoutedEventArgs e)
+        {
+            ComboBox current = (ComboBox)sender;
+
+            if(current.Name == CB_currentnamespace.Name)
+            {
+                var NmspList = this.NmspMng.GetNmspList();
+                CB_currentnamespace.ItemsSource = NmspList;
+            }
+            else if(current.Name == CB_currentfunc.Name)
+            {
+
             }
         }
     }

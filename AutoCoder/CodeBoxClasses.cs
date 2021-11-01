@@ -31,13 +31,18 @@ namespace AutoCoder
 
     public class NamespaceBox : CodeBoxClass
     {
-        public string Name;
+        public string Name = "nmsp";
         public UsingBox[] Usings;
         public ClassBlock[] Classes;
         public FunctionBlock[] Functions;
         public NamespaceBox()
         {
 
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 

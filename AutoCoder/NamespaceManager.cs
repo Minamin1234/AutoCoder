@@ -11,7 +11,7 @@ namespace AutoCoder
     public class NamespaceManager
     {
         public MainWindow WHandler;
-        public NamespaceBox[] Namespaces;
+        public NamespaceBox[] Namespaces = { new NamespaceBox() };
 
         public NamespaceManager()
         {

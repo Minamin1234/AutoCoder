@@ -17,8 +17,8 @@
         <Button x:Name="B_02ae" Content="Add Exec.." HorizontalAlignment="Left" Margin="401,40,0,0" VerticalAlignment="Top" Width="381" Height="30" Click="B_Clicked"/>
         <Button x:Name="B_03fm" Content="Function Manager.." HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="386" Height="30" Click="B_Clicked"/>
         <Button x:Name="B_01vm" Content="Variable Manager.." HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="386" Height="30" Click="B_Clicked"/>
-        <ComboBox x:Name="CB_currentfunc" HorizontalAlignment="Left" Margin="401,149,0,0" VerticalAlignment="Top" Width="381"/>
-        <ComboBox x:Name="CB_currentnamespace" HorizontalAlignment="Left" Margin="401,122,0,0" VerticalAlignment="Top" Width="381" ContextMenuClosing="CB_Closed" ContextMenuOpening="CB_Opened"/>
+        <ComboBox x:Name="CB_currentfunc" HorizontalAlignment="Left" Margin="401,149,0,0" VerticalAlignment="Top" Width="381" GotFocus="GetFocus"/>
+        <ComboBox x:Name="CB_currentnamespace" HorizontalAlignment="Left" Margin="402,110,0,0" VerticalAlignment="Top" Width="381" ContextMenuOpening="CB_Opened" ContextMenuClosing="CB_Closed" GotFocus="GetFocus" Height="30"/>
         <Button x:Name="B_03nm" Content="Namespace Manager" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="386" Height="30" Click="B_Clicked"/>
     </Grid>
 </Window>
