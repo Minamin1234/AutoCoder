@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="B_save" Content="Save" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="129" Height="25" FontSize="16"/>
         <Button x:Name="B_delvar" Content="Delete Variable" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top" Width="386" Height="25" FontSize="16"/>
-        <ComboBox x:Name="BC_namespace" HorizontalAlignment="Left" Margin="115,42,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
+        <ComboBox x:Name="CB_namespace" HorizontalAlignment="Left" Margin="115,42,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
         <TextBlock x:Name="T_namespace" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="Namespace:" VerticalAlignment="Top" Height="25" FontSize="18" Width="100"/>
         <TextBlock x:Name="T_function" HorizontalAlignment="Left" Margin="402,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" FontSize="18" Width="96"><Run Text="Function"/><Run Text=":"/></TextBlock>
         <ComboBox x:Name="CB_function" HorizontalAlignment="Left" Margin="502,42,0,0" VerticalAlignment="Top" Width="281" Height="25"/>
