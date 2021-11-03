@@ -24,23 +24,11 @@ namespace AutoCoder
         public MainWindow()
         {
             InitializeComponent();
-            
-            for(int i = 0;i < 10;i++)
-            {
-                Array.Resize(ref list, list.Length + 1);
-                this.list[i] = new ComboBoxItem();
-                this.list[i].Content = "A";
-            }
-            this.Add();
         }
 
         public void Add()
         {
-            foreach(ComboBoxItem CBI in this.list)
-            {
-                Console.WriteLine(CBI);
-                this.CB_namespace.Items.Add(CBI);
-            }
+
         }
     }
 }
