@@ -12,15 +12,24 @@ namespace AutoCoder
         {
             
         }
+
+        public virtual string ToCode()
+        {
+            return "";
+        }
+    }
+
+    public class Project
+    {
+        public NamespaceBlock MainProgram = new NamespaceBlock();
+        public NamespaceBlock[] Namespaces = { new NamespaceBlock() };
+        public Project() { }
     }
 
     public class NamespaceBlock : CodeBlockClass
     {
         public ClassBlock[] Classes = { new ClassBlock() };
-        public NamespaceBlock()
-        {
-
-        }
+        public NamespaceBlock() { }
     }
 
     public class Type : CodeBlockClass

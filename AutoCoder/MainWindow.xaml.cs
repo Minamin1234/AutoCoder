@@ -20,10 +20,19 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Project CurrentProject = new Project();
+        public NamespaceBlock CurrentNamespace = new NamespaceBlock();
+        
 
         public MainWindow()
         {
             InitializeComponent();
+            this.Initialize();
+        }
+
+        public void Initialize()
+        {
+
         }
 
         private void CB_Closed(object sender, EventArgs e)
