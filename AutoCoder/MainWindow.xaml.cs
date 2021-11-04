@@ -20,13 +20,13 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ComboBoxItem[] list = {new ComboBoxItem()};
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public void Add()
+        private void CB_Closed(object sender, EventArgs e)
         {
 
         }
