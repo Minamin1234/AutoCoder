@@ -20,10 +20,8 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Project CurrentProject = new Project();
-        public NamespaceBlock CurrentNamespace = new NamespaceBlock();
-        
-
+        public Project CurrentProject;
+        public NamespaceManager CNmspMnger;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +30,9 @@ namespace AutoCoder
 
         public void Initialize()
         {
-
+            this.CurrentProject = new Project(this);
+            this.CNmspMnger = this.CurrentProject.NmspMngr;
+            this.CB_namespace.ItemsSource = this.CNmspMnger.GetItmSrc();
         }
 
         private void CB_Closed(object sender, EventArgs e)
