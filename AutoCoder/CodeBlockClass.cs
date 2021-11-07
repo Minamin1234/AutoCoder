@@ -27,7 +27,13 @@ namespace AutoCoder
         public MainWindow MWHandler;
         public Window MngrWindow;
         public bool MngrWndIsOpend = false;
-        public CodeBlock[] Contents = { new CodeBlock() };
+        public CodeBlock[] Contents = new CodeBlock[1];
+
+        public SWindowState MWndState
+        {
+            get { return this.MWHandler.WndSte; }
+            set { this.MWHandler.WndSte = value; }
+        }
         public Manager() { this.Initialize(); }
         public Manager(MainWindow mwHandler)
         {
@@ -55,10 +61,10 @@ namespace AutoCoder
 
         public virtual bool OpenMngrWnd()
         {
-            if (this.MngrWndIsOpend) return false;
+            if (this.MWndState.CheckIsOpend(this.MngrWindow)) return false;
             if (this.MngrWindow == null) return false;
             this.MngrWindow.Show();
-            this.MngrWndIsOpend = true;
+            this.MWndState.AddOpendWnd(this.MngrWindow);//ここにて問題が発生する。
             return true;
         }
     }
