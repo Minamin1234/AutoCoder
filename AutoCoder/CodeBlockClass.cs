@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows;
 using System.Collections.ObjectModel;
 
 namespace AutoCoder
@@ -24,6 +25,8 @@ namespace AutoCoder
     public class Manager
     {
         public MainWindow MWHandler;
+        public Window MngrWindow;
+        public bool MngrWndIsOpend = false;
         public CodeBlock[] Contents = { new CodeBlock() };
         public Manager() { this.Initialize(); }
         public Manager(MainWindow mwHandler)
@@ -50,11 +53,23 @@ namespace AutoCoder
             this.Contents.Append(content);
         }
 
+        public virtual bool OpenMngrWnd()
+        {
+            if (this.MngrWndIsOpend) return false;
+            if (this.MngrWindow == null) return false;
+            this.MngrWindow.Show();
+            this.MngrWndIsOpend = true;
+            return true;
+        }
     }
 
     public class NamespaceManager : Manager
     {
-        public WNamespaceManager WNmspMngr;
+        public WNamespaceManager WNmspMngr
+        {
+            get { return (WNamespaceManager)this.MngrWindow; }
+            set { this.MngrWindow = value; }
+        }
         public NamespaceManager() { this.Initialize(); }
         public NamespaceManager(MainWindow mwHandler) : base(mwHandler)
         {

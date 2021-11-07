@@ -39,5 +39,14 @@ namespace AutoCoder
         {
 
         }
+
+        private void BClicked(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            if(button.Name == B_nmspmngr.Name)
+            {
+                
+            }
+        }
     }
 }
