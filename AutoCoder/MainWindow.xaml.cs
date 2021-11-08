@@ -44,7 +44,7 @@ namespace AutoCoder
         /// <returns>ウィンドウの追加が完了したかどうか</returns>
         public bool AddOpendWnd(Window opendwnd)
         {
-            if (CheckIsOpend(opendwnd)) return false;
+            if (this.CheckIsOpend(opendwnd)) return false;
             Array.Resize(ref this.OpendWndws, this.OpendWndws.Length + 1);//nullでエラー
             this.OpendWndws.Append(opendwnd);
             return true;
@@ -72,7 +72,7 @@ namespace AutoCoder
     {
         public Project CurrentProject;
         public NamespaceManager CNmspMnger;
-        public SWindowState WndSte = new SWindowState(null);
+        public WindowState WndSte = new WindowState();
         public MainWindow()
         {
             InitializeComponent();

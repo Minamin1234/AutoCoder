@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="WNamespaceManager" Height="225" Width="800" SizeToContent="Height" WindowStyle="None">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,14,0,0" TextWrapping="Wrap" Text="Namespaces" VerticalAlignment="Top" FontSize="18" Width="386"/>
-        <ListBox HorizontalAlignment="Left" Height="159" Margin="10,43,0,0" VerticalAlignment="Top" Width="772" Background="#FFB0B0B0"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
+        <TextBlock x:Name="T_namespace" HorizontalAlignment="Left" Margin="10,14,0,0" TextWrapping="Wrap" Text="Namespaces" VerticalAlignment="Top" FontSize="18" Width="382"/>
+        <ListBox x:Name="LB_nmsplist" HorizontalAlignment="Left" Height="159" Margin="10,43,0,0" VerticalAlignment="Top" Width="772" Background="#FFB0B0B0"/>
+        <Button x:Name="B_add" Content="Add" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
+        <Button x:Name="B_delete" Content="Delete" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
+        <Button x:Name="B_close" Content="Close" HorizontalAlignment="Left" Margin="397,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
 
     </Grid>
 </Window>
