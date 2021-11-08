@@ -83,6 +83,11 @@ namespace AutoCoder
             }
             return false;
         }
+
+        public bool RemoveWnd(Window removWnd)
+        {
+            return true;
+        }
     }
 
     /// <summary>
@@ -125,6 +130,7 @@ namespace AutoCoder
 
         public virtual void Initialize() { }
 
+        //Methods
         /// <summary>
         /// コンボボックスに表示するためのリストを返します。
         /// </summary>
@@ -162,6 +168,12 @@ namespace AutoCoder
             this.MngrWindow.Show();
             this.MWHandler.WndSte.AddOpendWnd(this.MngrWindow);
             return true;
+        }
+
+        //Events
+        public virtual void RecieveWndClose(Window sendfrom)
+        {
+            sendfrom.Close();
         }
     }
 

@@ -11,7 +11,7 @@
         <ListBox x:Name="LB_nmsplist" HorizontalAlignment="Left" Height="159" Margin="10,43,0,0" VerticalAlignment="Top" Width="772" Background="#FFB0B0B0"/>
         <Button x:Name="B_add" Content="Add" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
         <Button x:Name="B_delete" Content="Delete" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
-        <Button x:Name="B_close" Content="Close" HorizontalAlignment="Left" Margin="397,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18"/>
+        <Button x:Name="B_close" Content="Close" HorizontalAlignment="Left" Margin="397,10,0,0" VerticalAlignment="Top" Width="125" FontSize="18" Click="BClicked"/>
 
     </Grid>
 </Window>

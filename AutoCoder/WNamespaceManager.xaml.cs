@@ -20,6 +20,7 @@ namespace AutoCoder
     public partial class WNamespaceManager : Window
     {
         public MainWindow WHandler;
+        public Manager MHandler;
         public WNamespaceManager()
         {
             InitializeComponent();
@@ -28,6 +29,24 @@ namespace AutoCoder
         {
             InitializeComponent();
             this.WHandler = wHander;
+        }
+        public WNamespaceManager(Manager mHandler)
+        {
+            this.MHandler = mHandler;
+        }
+        public WNamespaceManager(MainWindow wHandler,Manager mHandler)
+        {
+            this.WHandler = wHandler;
+            this.MHandler = mHandler;
+        }
+
+        private void BClicked(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            if(button.Name == B_close.Name)
+            {
+                this.MHandler.RecieveWndClose(this);
+            }
         }
     }
 }
