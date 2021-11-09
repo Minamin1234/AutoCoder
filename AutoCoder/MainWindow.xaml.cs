@@ -83,7 +83,7 @@ namespace AutoCoder
         {
             this.CurrentProject = new Project(this);
             this.CNmspMnger = this.CurrentProject.NmspMngr;
-            this.CNmspMnger.MngrWindow = new WNamespaceManager(this);
+            this.CNmspMnger.MngrWindow = new WNamespaceManager(this,this.CNmspMnger);
             this.CB_namespace.ItemsSource = this.CNmspMnger.GetItmSrc();
         }
 
