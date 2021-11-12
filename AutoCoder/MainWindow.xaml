@@ -16,11 +16,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="401,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="100" Height="27" RenderTransformOrigin="0.582,-0.031"><Run Text="Function"/><Run Text=":"/></TextBlock>
         <ComboBox HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
         <Button Content="Function Manager..." HorizontalAlignment="Left" Margin="401,42,0,0" VerticalAlignment="Top" Width="381" FontSize="16" Height="27"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,138,0,0" TextWrapping="Wrap" Text="Class:" VerticalAlignment="Top" FontSize="18" Width="105" Height="27"/>
-        <ListBox HorizontalAlignment="Left" Height="103" Margin="10,306,0,0" VerticalAlignment="Top" Width="386" Background="#FFD4D4D4"/>
-        <ListBox HorizontalAlignment="Left" Height="103" Margin="401,306,0,0" VerticalAlignment="Top" Width="381" Background="#FFD4D4D4"/>
+        <ListBox HorizontalAlignment="Left" Height="158" Margin="10,251,0,0" VerticalAlignment="Top" Width="386" Background="#FFD4D4D4"/>
+        <ListBox HorizontalAlignment="Left" Height="158" Margin="401,251,0,0" VerticalAlignment="Top" Width="381" Background="#FFD4D4D4"/>
         <Button Content="Variable Manager..." HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="386" FontSize="16" Height="27"/>
-        <Button Content="Add Excution" HorizontalAlignment="Left" Margin="401,170,0,0" VerticalAlignment="Top" Width="381" FontSize="16" Height="27"/>
+        <Button Content="Edit Excution" HorizontalAlignment="Left" Margin="401,170,0,0" VerticalAlignment="Top" Width="381" FontSize="16" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="386" Height="27"><Run Text="Methods"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="401,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="381" Height="27"><Run Text="Executions"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>
