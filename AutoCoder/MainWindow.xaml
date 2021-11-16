@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Namespace:" VerticalAlignment="Top" FontSize="18" Width="105" Height="27"/>
-        <ComboBox HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
+        <ComboBox x:Name="CB_namespace" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
         <Button Content="Namespace Manager..." HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="386" FontSize="16" Height="27"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,74,0,0" TextWrapping="Wrap" Text="Class:" VerticalAlignment="Top" FontSize="18" Width="105" Height="27"/>
         <ComboBox HorizontalAlignment="Left" Margin="120,74,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>

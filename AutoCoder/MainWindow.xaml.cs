@@ -20,9 +20,21 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ACObject[] Nmsp = new ACObject[0];
         public MainWindow()
         {
             InitializeComponent();
+            for (int i = 0; i < 5; i++)
+            {
+                var nwitm = new ACObject();
+                Manager.AddCtnt(ref this.Nmsp, nwitm);
+            }
+            this.CB_namespace.ItemsSource = Manager.GetItmSrc(this.Nmsp);
+
+            foreach(var itm in this.Nmsp)
+            {
+                Console.WriteLine(itm.Name);
+            }
         }
     }
 }

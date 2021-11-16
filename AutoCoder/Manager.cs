@@ -9,51 +9,57 @@ using System.Collections.ObjectModel;
 
 namespace AutoCoder
 {
-    public class Manager
+    public static class Manager
     {
-        public MainWindow MWHandler;
-        public Window MNGRWindow;
-        public ACObject[] Contents = { new ACObject() };
-
-        public Manager(MainWindow mwHandler)
+        public static void AddCtnt(ref ACObject[] arry,ACObject addctnt)
         {
-            this.MWHandler = mwHandler;
+            Array.Resize(ref arry, arry.Length + 1);
+            arry.Append(addctnt);
         }
 
-        public ObservableCollection<ACObject> GetItmSrc()
+        public static ObservableCollection<ACObject> GetItmSrc(ACObject[] arry)
         {
             var itmsrc = new ObservableCollection<ACObject>();
-            foreach(var itm in this.Contents)
+            foreach(var itm in arry)
             {
                 itmsrc.Add(itm);
             }
             return itmsrc;
         }
 
-        public void AddCtnt(ACObject additm)
+        public static bool RemvCtnt(ref ACObject[] arry,ACObject remvItm)
         {
-            Array.Resize(ref this.Contents, this.Contents.Length + 1);
-            this.Contents.Append(additm);
-        }
-
-        public bool RemvCtnt(ACObject remvItm)
-        {
-            foreach(var itm in this.Contents)
+            foreach(var itm in arry)
             {
-                if (itm == remvItm)
+                if(itm == remvItm)
                 {
-                    ACObject[] nwarray = { new ACObject() };
-                    foreach(var nwitm in this.Contents)
+                    int i = 0;
+                    ACObject[] nwarry = new ACObject[0];
+                    foreach(var nwitm in arry)
                     {
-                        if (nwitm == remvItm) continue;
-                        Array.Resize(ref nwarray, nwarray.Length + 1);
-                        nwarray.Append(nwitm);
+                        if (nwitm == itm) continue;
+                        Array.Resize(ref nwarry, nwarry.Length + 1);
+                        nwarry.Append(nwitm);
                     }
-                    this.Contents = nwarray;
-                    return true;
+                    arry = nwarry;
                 }
+                return true;
             }
             return false;
+        }
+        public static bool RemvCtnt(ref ACObject[] arry,int remvIdx)
+        {
+            if (remvIdx > arry.Length - 1) return false;
+            arry[remvIdx] = null;
+            ACObject[] nwarry = new ACObject[0];
+            foreach(var itm in arry)
+            {
+                if (itm == null) continue;
+                Array.Resize(ref nwarry, nwarry.Length + 1);
+                nwarry.Append(itm);
+            }
+            arry = nwarry;
+            return true;
         }
     }
 }
