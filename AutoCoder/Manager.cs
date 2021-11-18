@@ -13,8 +13,20 @@ namespace AutoCoder
     {
         public static void AddCtnt(ref ACObject[] arry,ACObject addctnt)
         {
-            Array.Resize(ref arry, arry.Length + 1);
-            arry.Append(addctnt);
+            ACObject[] narray = arry;
+            Array.Resize(ref arry, narray.Length + 1);
+            int i = 0;
+            foreach(var itm in narray)
+            {
+                arry[i] = itm;
+                i++;
+            }
+            arry[i] = addctnt;
+        }
+
+        public static void AddCntntt(ref ACObject[] arry,ACObject addctnt)
+        {
+            
         }
 
         public static ObservableCollection<ACObject> GetItmSrc(ACObject[] arry)

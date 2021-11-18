@@ -20,7 +20,7 @@ namespace AutoCoder
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ACObject[] Nmsp = new ACObject[0];
+        public ACObject[] Nmsp = { new ACObject()};
         public MainWindow()
         {
             InitializeComponent();
