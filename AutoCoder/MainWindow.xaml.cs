@@ -13,28 +13,40 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Collections.ObjectModel;
+
 namespace AutoCoder
 {
-    /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
-    /// </summary>
+    public class Namespace
+    {
+        public string Name = "Nmsp";
+        public Namespace()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
+    }
+
+
     public partial class MainWindow : Window
     {
-        public ACObject[] Nmsp = { new ACObject()};
+        public Namespace[] Namespaces = new Namespace[0];
+        public Namespace CNamespace = null;
+
         public MainWindow()
         {
             InitializeComponent();
-            for (int i = 0; i < 5; i++)
-            {
-                var nwitm = new ACObject();
-                Manager.AddCtnt(ref this.Nmsp, nwitm);
-            }
-            this.CB_namespace.ItemsSource = Manager.GetItmSrc(this.Nmsp);
 
-            foreach(var itm in this.Nmsp)
+            var nlist = new ObservableCollection<Namespace>();
+            foreach (var itm in this.Namespaces)
             {
-                Console.WriteLine(itm.Name);
+                nlist.Add(itm);
             }
+            this.CB_namespace.ItemsSource = nlist;
         }
     }
 }
