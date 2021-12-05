@@ -1,0 +1,21 @@
+﻿<Window x:Class="AutoCoder.CreateNmspWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCoder"
+        mc:Ignorable="d"
+        Title="CreateNmspWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="14" Width="70" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="85,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="697" FontSize="14"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="707,386,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="627,386,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
+        <ListBox HorizontalAlignment="Left" Height="139" Margin="10,242,0,0" VerticalAlignment="Top" Width="772"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" Text="Namespaces" VerticalAlignment="Top" FontSize="14" Width="91" Height="23"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="547,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="627,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="707,217,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

@@ -55,6 +55,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateVariableWindow.xaml.cs">
+      <DependentUpon>CreateVariableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VariableManagerWindow.xaml.cs">
+      <DependentUpon>VariableManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClassManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateArgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateClsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateFncWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateNmspWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateVariableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FunctionManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +97,41 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClassManagerWindow.xaml.cs">
+      <DependentUpon>ClassManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateArgWindow.xaml.cs">
+      <DependentUpon>CreateArgWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateClsWindow.xaml.cs">
+      <DependentUpon>CreateClsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateFncWindow.xaml.cs">
+      <DependentUpon>CreateFncWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNmspWindow.xaml.cs">
+      <DependentUpon>CreateNmspWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FunctionManagerWindow.xaml.cs">
+      <DependentUpon>FunctionManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NmspManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VariableManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NmspManagerWindow.xaml.cs">
+      <DependentUpon>NmspManagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="AutoCoder.VariableManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCoder"
+        mc:Ignorable="d"
+        Title="VariableManagerWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Height="175" Margin="10,234,0,0" VerticalAlignment="Top" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,206,0,0" TextWrapping="Wrap" Text="Variables" VerticalAlignment="Top" FontSize="14" Width="70" Height="23"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="161,209,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="241,209,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="321,209,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Owner"/><Run Text="-"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="61,10,0,0" TextWrapping="Wrap" Text="name" VerticalAlignment="Top" FontSize="14"/>
+
+    </Grid>
+</Window>

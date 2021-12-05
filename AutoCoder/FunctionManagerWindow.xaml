@@ -1,0 +1,17 @@
+﻿<Window x:Class="AutoCoder.FunctionManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoCoder"
+        mc:Ignorable="d"
+        Title="FunctionManagerWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Height="167" Margin="10,242,0,0" VerticalAlignment="Top" Width="386"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" FontSize="14" Text="Functions"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="161,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="241,217,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="321,217,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
