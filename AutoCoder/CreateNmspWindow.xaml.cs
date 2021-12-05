@@ -43,5 +43,16 @@ namespace AutoCoder
         {
             //this.Show();
         }
+
+        private void BClicked(object sender, RoutedEventArgs e)
+        {
+            var currentbutton = (Button)sender;
+
+            if(currentbutton.Name == B_OK.Name)
+            {
+                var nmspwindw = (NmspManagerWindow)this.WHandler;
+                nmspwindw.WinManager.ClearSubWindow();
+            }
+        }
     }
 }

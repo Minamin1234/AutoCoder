@@ -191,7 +191,6 @@ namespace AutoCoder
         }
     }
 
-
     public partial class MainWindow : Window
     {
         public Project CurrentProject = new Project();

@@ -9,7 +9,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="14" Width="70" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="85,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="697" FontSize="14"/>
-        <Button Content="OK" HorizontalAlignment="Left" Margin="707,386,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
+        <Button x:Name="B_OK" Content="OK" HorizontalAlignment="Left" Margin="707,386,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Click="BClicked"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="627,386,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
         <ListBox HorizontalAlignment="Left" Height="139" Margin="10,242,0,0" VerticalAlignment="Top" Width="772"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" Text="Namespaces" VerticalAlignment="Top" FontSize="14" Width="91" Height="23"/>
