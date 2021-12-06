@@ -29,7 +29,7 @@ namespace AutoCoder
         /// <param name="List"></param>
         /// <param name="data"></param>
         /// <returns>追加に成功したかどうか</returns>
-        static bool AddData<T>(ref T[] List,T data)
+        public static bool AddData<T>(ref T[] List,T data)
         {
             Array.Resize(ref List, List.Length + 1);
             List[List.Length - 1] = data;
@@ -50,6 +50,23 @@ namespace AutoCoder
         /// 編集モード
         /// </summary>
         Edit
+    }
+
+    /// <summary>
+    /// 操作されるデータ対象についてのプロパティクラス
+    /// </summary>
+    public class EDITPROPERTY
+    {
+        public EEditMode EditMode
+        {
+            get { return this.TargetData != null ? EEditMode.Edit : EEditMode.Create; }
+        }
+        public ACObject TargetData = null;
+        public EDITPROPERTY() { }
+        public EDITPROPERTY(ACObject target)
+        {
+            if (target != null) this.TargetData = target;
+        }
     }
 
     //それぞれのウィンドウにサブのウィンドウを管理する為の変数や関数を提供する為のクラス。
@@ -145,9 +162,17 @@ namespace AutoCoder
     }
 
     /// <summary>
+    /// このプログラムで扱うオブジェクトの基底クラス
+    /// </summary>
+    public class ACObject
+    {
+        public ACObject() { }
+    }
+
+    /// <summary>
     /// プロジェクトのクラス
     /// </summary>
-    public class Project
+    public class Project : ACObject
     {
         public string Title = "Project";
         public SourceFile[] Files = new SourceFile[0];
@@ -167,7 +192,7 @@ namespace AutoCoder
     /// <summary>
     /// プロジェクト内のソースファイル要素
     /// </summary>
-    public class SourceFile
+    public class SourceFile : ACObject
     {
         public string FileName = "File";
         public Namespace[] Namespaces = new Namespace[0];
@@ -177,9 +202,10 @@ namespace AutoCoder
     /// <summary>
     /// ソースファイル内の名前空間要素
     /// </summary>
-    public class Namespace
+    public class Namespace : ACObject
     {
         public string Name = "Nmsp";
+        public Namespace[] Namespaces = new Namespace[0];
         public Namespace()
         {
 

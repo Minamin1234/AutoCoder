@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Collections.ObjectModel;
+
 namespace AutoCoder
 {
     /// <summary>
@@ -20,7 +22,7 @@ namespace AutoCoder
     public partial class CreateNmspWindow : Window
     {
         public Window WHandler = null;
-        public EEditMode EditMode = EEditMode.Create;
+        public EDITPROPERTY EditProperty = null;
         public CreateNmspWindow()
         {
             InitializeComponent();
@@ -32,16 +34,28 @@ namespace AutoCoder
             this.Initialize();
             this.WHandler = whandler;
         }
-        public CreateNmspWindow(Window whandler,EEditMode editmode)
+        public CreateNmspWindow(Window whandler, EDITPROPERTY editproperty = null)
         {
             InitializeComponent();
             this.Initialize();
             this.WHandler = whandler;
-            this.EditMode = editmode;
+            if (editproperty != null) this.EditProperty = editproperty;
         }
         public void Initialize()
         {
-            //this.Show();
+            if (this.EditProperty == null ||
+                this.EditProperty.EditMode == EEditMode.Create) this.EditProperty = new EDITPROPERTY();
+            if(this.EditProperty.EditMode == EEditMode.Edit)
+            {
+                var currentNmsp = (Namespace)this.EditProperty.TargetData;
+                this.TB_Name.Text = currentNmsp.Name;
+                var list = new ObservableCollection<Namespace>();
+                foreach(var nmsp in currentNmsp.Namespaces)
+                {
+                    list.Add(nmsp);
+                }
+                this.LB_Nmsps.ItemsSource = list;
+            }
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -50,6 +64,13 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
+                var nmsp = (Namespace)this.EditProperty.TargetData;
+                nmsp.Name = this.TB_Name.Text;
+                foreach(var itm in this.LB_Nmsps.Items)
+                {
+                    var nmspItm = (Namespace)itm;
+                    DataControl.AddData(ref nmsp.Namespaces, nmspItm);
+                }
                 var nmspwindw = (NmspManagerWindow)this.WHandler;
                 nmspwindw.WinManager.ClearSubWindow();
             }

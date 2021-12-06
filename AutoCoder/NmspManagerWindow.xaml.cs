@@ -53,8 +53,9 @@ namespace AutoCoder
             var CurentButton = (Button)sender;
             if(CurentButton.Name == B_Add.Name)
             {
+                var editpropty = new EDITPROPERTY();
                 if (this.WinManager.IsEditing != true) 
-                    this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this));
+                    this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this,editpropty));
             }
         }
     }
