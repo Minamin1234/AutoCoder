@@ -64,6 +64,7 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
+                //ウィンドウに入力された情報をもとに名前空間のデータを作成・格納
                 var nmsp = (Namespace)this.EditProperty.TargetData;
                 nmsp.Name = this.TB_Name.Text;
                 foreach(var itm in this.LB_Nmsps.Items)
@@ -71,6 +72,10 @@ namespace AutoCoder
                     var nmspItm = (Namespace)itm;
                     DataControl.AddData(ref nmsp.Namespaces, nmspItm);
                 }
+                this.EditProperty.TargetData = nmsp;
+                var nmspmngr = (NmspManagerWindow)this.WHandler;
+                nmspmngr.CommitData(this.EditProperty);
+
                 var nmspwindw = (NmspManagerWindow)this.WHandler;
                 nmspwindw.WinManager.ClearSubWindow();
             }

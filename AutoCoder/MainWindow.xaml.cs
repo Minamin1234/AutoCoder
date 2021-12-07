@@ -37,6 +37,11 @@ namespace AutoCoder
         }
     }
 
+    public interface IDataEditing
+    {
+        bool CommitData(EDITPROPERTY editproperty);
+    }
+
     /// <summary>
     /// データの操作モードを指定する列挙体
     /// </summary>
@@ -62,10 +67,12 @@ namespace AutoCoder
             get { return this.TargetData != null ? EEditMode.Edit : EEditMode.Create; }
         }
         public ACObject TargetData = null;
+        public uint Index = 0;
         public EDITPROPERTY() { }
-        public EDITPROPERTY(ACObject target)
+        public EDITPROPERTY(ACObject target,uint index)
         {
             if (target != null) this.TargetData = target;
+            this.Index = index;
         }
     }
 

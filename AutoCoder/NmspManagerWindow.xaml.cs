@@ -17,7 +17,7 @@ namespace AutoCoder
     /// <summary>
     /// NmspManagerWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class NmspManagerWindow : Window
+    public partial class NmspManagerWindow : Window,IDataEditing
     {
         public WindowManager WinManager;
         public MainWindow WHander = null;
@@ -40,6 +40,13 @@ namespace AutoCoder
         public bool Initialize()
         {
             this.WinManager = new WindowManager(this);
+            return true;
+        }
+
+        public bool CommitData(EDITPROPERTY editproperty)
+        {
+            if (editproperty != null && editproperty.TargetData != null) this.CurrentFile.Namespaces[editproperty.Index]
+                     = (Namespace)editproperty.TargetData;
             return true;
         }
 
