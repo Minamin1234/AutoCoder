@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NmspManagerWindow" Height="450" Width="800" Closing="WClosing">
     <Grid>
-        <ListBox HorizontalAlignment="Left" Height="159" Margin="10,250,0,0" VerticalAlignment="Top" Width="772"/>
+        <ListBox x:Name="LB_Nmsp" HorizontalAlignment="Left" Height="159" Margin="10,250,0,0" VerticalAlignment="Top" Width="772"/>
         <Button x:Name="B_Add" Content="Add" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="75" Click="BClicked"/>
         <Button x:Name="B_Edit" Content="Edit" HorizontalAlignment="Left" Margin="90,225,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="B_Delete" Content="Delete" HorizontalAlignment="Left" Margin="170,225,0,0" VerticalAlignment="Top" Width="75"/>

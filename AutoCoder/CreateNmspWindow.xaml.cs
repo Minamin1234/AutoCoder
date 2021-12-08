@@ -34,20 +34,25 @@ namespace AutoCoder
             this.Initialize();
             this.WHandler = whandler;
         }
-        public CreateNmspWindow(Window whandler, EDITPROPERTY editproperty = null)
+        public CreateNmspWindow(Window whandler, EDITPROPERTY editproperty)
         {
             InitializeComponent();
-            this.Initialize();
             this.WHandler = whandler;
-            if (editproperty != null) this.EditProperty = editproperty;
+            if (editproperty == null) throw new ArgumentNullException();
+            else this.EditProperty = editproperty;
+            this.Initialize();
+            
         }
         public void Initialize()
         {
-            if (this.EditProperty == null ||
-                this.EditProperty.EditMode == EEditMode.Create) this.EditProperty = new EDITPROPERTY();
+            if (this.EditProperty != null) { }
+            if (this.EditProperty.EditMode == EEditMode.Create)
+            {
+                DataControl.AddData(ref this.EditProperty.TargetData, new Namespace());
+            }
             if(this.EditProperty.EditMode == EEditMode.Edit)
             {
-                var currentNmsp = (Namespace)this.EditProperty.TargetData;
+                var currentNmsp = (Namespace)this.EditProperty.TargetData[this.EditProperty.Index];
                 this.TB_Name.Text = currentNmsp.Name;
                 var list = new ObservableCollection<Namespace>();
                 foreach(var nmsp in currentNmsp.Namespaces)
@@ -64,15 +69,31 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
-                //ウィンドウに入力された情報をもとに名前空間のデータを作成・格納
-                var nmsp = (Namespace)this.EditProperty.TargetData;
-                nmsp.Name = this.TB_Name.Text;
-                foreach(var itm in this.LB_Nmsps.Items)
+                switch(this.EditProperty.EditMode)
                 {
-                    var nmspItm = (Namespace)itm;
-                    DataControl.AddData(ref nmsp.Namespaces, nmspItm);
+                    case EEditMode.Create:
+                        var nmsp = new Namespace();
+                        nmsp.Name = this.TB_Name.Text;
+                        foreach(var itm in this.LB_Nmsps.Items)
+                        {
+                            DataControl.AddData(ref nmsp.Namespaces, (Namespace)itm);
+                        }
+                        DataControl.AddData(ref this.EditProperty.TargetData, nmsp);
+                        break;
+
+                    case EEditMode.Edit:
+                        var data = (Namespace)this.EditProperty.TargetData[this.EditProperty.Index];
+                        data.Name = this.TB_Name.Text;
+                        foreach(var itm in this.LB_Nmsps.Items)
+                        {
+                            
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
-                this.EditProperty.TargetData = nmsp;
+                //ウィンドウに入力された情報をもとに名前空間のデータを作成・格納
                 var nmspmngr = (NmspManagerWindow)this.WHandler;
                 nmspmngr.CommitData(this.EditProperty);
 

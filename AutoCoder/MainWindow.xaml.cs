@@ -35,6 +35,40 @@ namespace AutoCoder
             List[List.Length - 1] = data;
             return true;
         }
+
+        /// <summary>
+        /// 配列OriginからTargetに要素全てをコピーします
+        /// </summary>
+        /// <typeparam name="T">要素の型</typeparam>
+        /// <param name="Origin">コピー元配列</param>
+        /// <param name="Target">コピー先配列。同じサイズの配列にコピーしたい場合は、
+        /// これには空の配列を用意すべきです。</param>
+        /// <returns>コピーに成功したかどうか</returns>
+        public static bool CopyData<T>(T[] Origin,ref T[] Target)
+        {
+            foreach(T itm in Origin)
+            {
+                Array.Resize(ref Target, Target.Length + 1);
+                Target[Target.Length - 1] = itm;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// リストボックスのアイテムコレクションを作成し、返します。
+        /// </summary>
+        /// <typeparam name="T">アイテムコレクションの型</typeparam>
+        /// <param name="item">アイテムコレクションのアイテム配列</param>
+        /// <returns>リストボックスのアイテムコレクション</returns>
+        public static ObservableCollection<T> CreateListItem<T>(T[] item)
+        {
+            var list = new ObservableCollection<T>();
+            foreach(T itm in item)
+            {
+                list.Add(itm);
+            }
+            return list;
+        }
     }
 
     public interface IDataEditing
@@ -62,17 +96,20 @@ namespace AutoCoder
     /// </summary>
     public class EDITPROPERTY
     {
-        public EEditMode EditMode
-        {
-            get { return this.TargetData != null ? EEditMode.Edit : EEditMode.Create; }
-        }
-        public ACObject TargetData = null;
+        public EEditMode EditMode = EEditMode.Create;
+        public ACObject[] TargetData = null;
         public uint Index = 0;
         public EDITPROPERTY() { }
-        public EDITPROPERTY(ACObject target,uint index)
+        public EDITPROPERTY(ACObject[] target)
+        {
+            this.EditMode = EEditMode.Create;
+            if (target != null) this.TargetData = target;
+        }
+        public EDITPROPERTY(ACObject[] target,uint index)
         {
             if (target != null) this.TargetData = target;
             this.Index = index;
+            this.EditMode = EEditMode.Edit;
         }
     }
 
