@@ -79,6 +79,11 @@ namespace AutoCoder
                             DataControl.AddData(ref nmsp.Namespaces, (Namespace)itm);
                         }
                         DataControl.AddData(ref this.EditProperty.TargetData, nmsp);
+                        Console.WriteLine(this.EditProperty.TargetData.Length);
+                        foreach(var itm in this.EditProperty.TargetData)
+                        {
+                            Console.WriteLine(itm);
+                        }
                         break;
 
                     case EEditMode.Edit:
@@ -103,3 +108,5 @@ namespace AutoCoder
         }
     }
 }
+
+

@@ -60,7 +60,6 @@ namespace AutoCoder
         {
             if (editproperty != null && editproperty.TargetData != null) this.LoadDatas();
             this.LoadDatas();
-            
             return true;
         }
 
