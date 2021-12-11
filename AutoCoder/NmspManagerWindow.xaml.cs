@@ -46,6 +46,14 @@ namespace AutoCoder
             return true;
         }
 
+        public bool OpenCreateWindow()
+        {
+            var editproperty = new EDITPROPERTY(this.CurrentFile.Namespaces);
+            this.WinManager.SetSubWindow(new CreateNmspWindow(this, editproperty));
+
+            return true;
+        }
+
         public void LoadDatas()
         {
             var list = new ObservableCollection<Namespace>();

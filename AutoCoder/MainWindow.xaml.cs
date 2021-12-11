@@ -179,7 +179,7 @@ namespace AutoCoder
         /// <returns>除去に成功したかどうか</returns>
         public bool ClearSubWindow()
         {
-            if (this.SubWindow != null)
+            if (this.IsEditing != true)
             {
                 this.SubWindow.Close();
                 this.SubWindow = null;
