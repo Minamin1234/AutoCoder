@@ -23,17 +23,7 @@ namespace AutoCoder
     {
         public Window WHandler = null;
         public EDITPROPERTY EditProperty = null;
-        public CreateNmspWindow()
-        {
-            InitializeComponent();
-            this.Initialize();
-        }
-        public CreateNmspWindow(Window whandler)
-        {
-            InitializeComponent();
-            this.Initialize();
-            this.WHandler = whandler;
-        }
+
         public CreateNmspWindow(Window whandler, EDITPROPERTY editproperty)
         {
             InitializeComponent();
@@ -45,22 +35,7 @@ namespace AutoCoder
         }
         public void Initialize()
         {
-            if (this.EditProperty != null) { }
-            if (this.EditProperty.EditMode == EEditMode.Create)
-            {
-                DataControl.AddData(ref this.EditProperty.TargetData, new Namespace());
-            }
-            if(this.EditProperty.EditMode == EEditMode.Edit)
-            {
-                var currentNmsp = (Namespace)this.EditProperty.TargetData[this.EditProperty.Index];
-                this.TB_Name.Text = currentNmsp.Name;
-                var list = new ObservableCollection<Namespace>();
-                foreach(var nmsp in currentNmsp.Namespaces)
-                {
-                    list.Add(nmsp);
-                }
-                this.LB_Nmsps.ItemsSource = list;
-            }
+
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -69,41 +44,6 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
-                switch(this.EditProperty.EditMode)
-                {
-                    case EEditMode.Create:
-                        var nmsp = new Namespace();
-                        nmsp.Name = this.TB_Name.Text;
-                        foreach(var itm in this.LB_Nmsps.Items)
-                        {
-                            DataControl.AddData(ref nmsp.Namespaces, (Namespace)itm);
-                        }
-                        DataControl.AddData(ref this.EditProperty.TargetData, nmsp);
-                        Console.WriteLine(this.EditProperty.TargetData.Length);
-                        foreach(var itm in this.EditProperty.TargetData)
-                        {
-                            Console.WriteLine(itm);
-                        }
-                        break;
-
-                    case EEditMode.Edit:
-                        var data = (Namespace)this.EditProperty.TargetData[this.EditProperty.Index];
-                        data.Name = this.TB_Name.Text;
-                        foreach(var itm in this.LB_Nmsps.Items)
-                        {
-                            
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-                //ウィンドウに入力された情報をもとに名前空間のデータを作成・格納
-                var nmspmngr = (NmspManagerWindow)this.WHandler;
-                nmspmngr.CommitData(this.EditProperty);
-
-                var nmspwindw = (NmspManagerWindow)this.WHandler;
-                nmspwindw.WinManager.ClearSubWindow();
             }
         }
     }

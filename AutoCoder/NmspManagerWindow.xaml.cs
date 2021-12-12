@@ -34,10 +34,6 @@ namespace AutoCoder
         {
             InitializeComponent();
             this.Initialize();
-            if (whandler != null) this.WHander = whandler;
-            if (TargetFile != null) this.CurrentFile = TargetFile;
-            this.Show();
-            this.LoadDatas();
         }
 
         public bool Initialize()
@@ -46,34 +42,14 @@ namespace AutoCoder
             return true;
         }
 
-        public bool OpenCreateWindow()
-        {
-            var editproperty = new EDITPROPERTY(this.CurrentFile.Namespaces);
-            this.WinManager.SetSubWindow(new CreateNmspWindow(this, editproperty));
-
-            return true;
-        }
-
-        public void LoadDatas()
-        {
-            var list = new ObservableCollection<Namespace>();
-            foreach (var itm in this.CurrentFile.Namespaces)
-            {
-                list.Add(itm);
-            }
-            this.LB_Nmsp.ItemsSource = list;
-        }
-
         public bool CommitData(EDITPROPERTY editproperty)
         {
-            if (editproperty != null && editproperty.TargetData != null) this.LoadDatas();
-            this.LoadDatas();
             return true;
         }
 
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.WHander.SubWindow = null;
+
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -81,9 +57,7 @@ namespace AutoCoder
             var CurentButton = (Button)sender;
             if(CurentButton.Name == B_Add.Name)
             {
-                var editpropty = new EDITPROPERTY(this.CurrentFile.Namespaces);
-                if (this.WinManager.IsEditing != true) 
-                    this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this,editpropty));
+
             }
         }
     }
