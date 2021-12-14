@@ -33,12 +33,16 @@ namespace AutoCoder
         public NmspManagerWindow(ref SourceFile TargetFile,MainWindow whandler)
         {
             InitializeComponent();
+            if (TargetFile == null || whandler == null) throw new ArgumentNullException();
+            this.WHander = whandler;
+            this.CurrentFile = TargetFile;
             this.Initialize();
         }
 
         public bool Initialize()
         {
             this.WinManager = new WindowManager(this);
+            this.CurrentFile = this.WHander.CurrentFile;
             return true;
         }
 
@@ -49,7 +53,7 @@ namespace AutoCoder
 
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            this.WHander.WinManager.ClearSubWindow();
         }
 
         private void BClicked(object sender, RoutedEventArgs e)

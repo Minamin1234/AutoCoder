@@ -170,6 +170,7 @@ namespace AutoCoder
         public WindowManager(Window owner)
         {
             if (owner != null) this.Owner = owner;
+            else throw new Error("WindowManager:所有者クラスがnullでした");
         }
         /// <summary>
         /// サブで開いているウィンドウを指定します。
@@ -179,8 +180,9 @@ namespace AutoCoder
         /// <returns>指定に成功したかどうか</returns>
         public bool SetSubWindow(Window newWindow)
         {
+            string FuncName = "SetSubWindow:";
             if (newWindow != null) this.SubWindow = newWindow;
-            else return false;
+            else throw new Error(FuncName + "設定しようとしたウィンドウがnullでした");
             return true;
         }
         /// <summary>
@@ -191,14 +193,15 @@ namespace AutoCoder
         /// <returns>指定に成功したかどうか。</returns>
         public bool SwapSubWindow(Window newWindow)
         {
+            string FuncName = "SwapSubWindow:";
             if (newWindow != null) { }
-            else return false;
+            else throw new Error(FuncName + "切り替えようとしたウィンドウがnullでした");
             if(this.SubWindow != newWindow)
             {
                 this.SubWindow.Close();
                 this.SubWindow = newWindow;
             }
-            else return false;
+            else throw new Error(FuncName + "同じウィンドウを切り替えようとしました");
             return true;
         }
         /// <summary>
@@ -207,12 +210,13 @@ namespace AutoCoder
         /// <returns>除去に成功したかどうか</returns>
         public bool ClearSubWindow()
         {
-            if (this.IsEditing != true)
+            string FuncName = "ClearSubWindow:";
+            if (this.IsEditing == true)
             {
                 this.SubWindow.Close();
                 this.SubWindow = null;
             }
-            else return false;
+            else throw new Error(FuncName + "すでにウィンドウは取り除かれています。");
             return true;
         }
 
@@ -224,13 +228,22 @@ namespace AutoCoder
         /// <returns>サブウィンドウの指定に成功したかどうか</returns>
         public bool OpenSetSubWindow(Window nwindow)
         {
+            string FuncName = "OpenSetSubWindow:";
             if (nwindow != null) { }
-            else return false;
-            if (this.SubWindow == nwindow) return false;
+            else throw new Error(FuncName + "設定しようとしたウィンドウがnullでした。");
+            if (this.SubWindow == nwindow) throw new Error(FuncName + "既に設定されたウィンドウ");
             this.SubWindow = nwindow;
             nwindow.Show();
             return true;
         }
+    }
+
+    /// <summary>
+    /// このプロジェクト内でのエラーを表します。引数にはエラーの概要を記述します。
+    /// </summary>
+    public class Error : System.Exception
+    {
+        public Error(string Desc) : base(Desc) { }
     }
 
     /// <summary>
@@ -296,6 +309,7 @@ namespace AutoCoder
         public Namespace[] Namespaces = new Namespace[0];
         public Namespace CNamespace = null;
         public Window SubWindow = null;
+        public WindowManager WinManager;
         public bool IsEditing
         {
             get { return this.CurrentFile != null; }
@@ -312,6 +326,7 @@ namespace AutoCoder
                 nlist.Add(itm);
             }
             this.CB_namespace.ItemsSource = nlist;//
+            this.WinManager = new WindowManager(this);
             this.CurrentProject.CreateNewFile();
             this.Load();
         }
@@ -336,6 +351,21 @@ namespace AutoCoder
         }
 
         /// <summary>
+        /// 名前空間の管理ウィンドウを表示します。
+        /// エラーの場合は戻り値はfalseを返します。
+        /// </summary>
+        /// <returns>ウィンドウの表示に成功したかどうか。</returns>
+        public bool OpenNmspMngrWindow()
+        {
+            string FuncName = "OpenNmspMngrWindw:";
+            if (this.WinManager == null) ;
+            if (this.WinManager.IsEditing) throw new Error(FuncName + "既に別のウィンドウを開いています");
+            this.WinManager.OpenSetSubWindow(new NmspManagerWindow(ref this.CurrentFile, this));
+            return true;
+        }
+
+
+        /// <summary>
         /// ウィンドウ内のどれかのボタンが押された時
         /// </summary>
         /// <param name="sender">押されたボタンクラス</param>
@@ -346,7 +376,7 @@ namespace AutoCoder
 
             if(CurrentButton.Name == B_NmspMnger.Name)
             {
-
+                this.OpenNmspMngrWindow();
             }
         }
     }

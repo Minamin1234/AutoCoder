@@ -57,6 +57,11 @@ namespace Test_CS
         }
     }
 
+    public class Error : Exception
+    {
+        public Error(string Desc) : base(Desc) { }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -72,6 +77,7 @@ namespace Test_CS
             Console.WriteLine(PrimitiveComponent.IsValid(ref t1));
             Console.WriteLine("IsValid(ref t2):");
             Console.WriteLine(PrimitiveComponent.IsValid(ref t2));
+            throw new Error("Error");//例外クラスのテスト
         }
     }
 }
