@@ -46,6 +46,12 @@ namespace AutoCoder
             {
             }
         }
+
+        private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var NmspMngrWnd = (NmspManagerWindow)this.WHandler;
+            NmspMngrWnd.WinManager.ClearSubWindow();
+        }
     }
 }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCoder"
         mc:Ignorable="d"
-        Title="CreateNmspWindow" Height="450" Width="800">
+        Title="CreateNmspWindow" Height="450" Width="800" Closing="WClosing">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="14" Width="70" Height="23"/>
         <TextBox x:Name="TB_Name" HorizontalAlignment="Left" Height="23" Margin="85,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="697" FontSize="14"/>

@@ -35,6 +35,7 @@ namespace Test_CS
         {
             return Object != null ? true : false;
         }
+
     }
 
     public class TestClass
@@ -77,7 +78,9 @@ namespace Test_CS
             Console.WriteLine(PrimitiveComponent.IsValid(ref t1));
             Console.WriteLine("IsValid(ref t2):");
             Console.WriteLine(PrimitiveComponent.IsValid(ref t2));
-            throw new Error("Error");//例外クラスのテスト
+            //throw new Error("Error");//例外クラスのテスト
+
+            TestClass t3 = new TestClass();
         }
     }
 }

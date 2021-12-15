@@ -213,7 +213,6 @@ namespace AutoCoder
             string FuncName = "ClearSubWindow:";
             if (this.IsEditing == true)
             {
-                this.SubWindow.Close();
                 this.SubWindow = null;
             }
             else throw new Error(FuncName + "すでにウィンドウは取り除かれています。");
@@ -358,7 +357,7 @@ namespace AutoCoder
         public bool OpenNmspMngrWindow()
         {
             string FuncName = "OpenNmspMngrWindw:";
-            if (this.WinManager == null) ;
+            if (this.WinManager == null) throw new Error(FuncName + "開こうとしたウィンドウがnullでした");
             if (this.WinManager.IsEditing) throw new Error(FuncName + "既に別のウィンドウを開いています");
             this.WinManager.OpenSetSubWindow(new NmspManagerWindow(ref this.CurrentFile, this));
             return true;
