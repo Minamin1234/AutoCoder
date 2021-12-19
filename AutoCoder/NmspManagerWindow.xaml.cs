@@ -31,10 +31,10 @@ namespace AutoCoder
             this.Initialize();
         }
         /// <summary>
-        /// 編集用ウィンドウを表示するには編集対象のソースファイルを渡し、
+        /// 管理用ウィンドウを表示するには参照対象のソースファイルを渡し、
         /// このウィンドウを所有するメインウィンドウを指定します。
         /// </summary>
-        /// <param name="TargetFile">編集対象のソースファイルクラス</param>
+        /// <param name="TargetFile">参照対象のソースファイルクラス</param>
         /// <param name="whandler">このウィンドウを所有するメインウィンドウ</param>
         /// <exception cref="ArgumentNullException"></exception>
         public NmspManagerWindow(ref SourceFile TargetFile,MainWindow whandler)

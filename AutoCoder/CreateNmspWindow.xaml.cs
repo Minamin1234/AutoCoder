@@ -44,6 +44,15 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
+                switch(this.EditProperty.EditMode)
+                {
+                    case EEditMode.Create:
+                        break;
+                    case EEditMode.Edit:
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
