@@ -125,15 +125,15 @@ namespace AutoCoder
     public class EDITPROPERTY
     {
         public EEditMode EditMode = EEditMode.Create;
-        public ACObject[] TargetData = null;
+        public List<ACObject> TargetData = null;
         public uint Index = 0;
         public EDITPROPERTY() { }
-        public EDITPROPERTY(ACObject[] target)
+        public EDITPROPERTY(List<ACObject> target)
         {
             this.EditMode = EEditMode.Create;
             if (target != null) this.TargetData = target;
         }
-        public EDITPROPERTY(ACObject[] target,uint index)
+        public EDITPROPERTY(List<ACObject> target,uint index)
         {
             if (target != null) this.TargetData = target;
             this.Index = index;
@@ -259,7 +259,7 @@ namespace AutoCoder
     public class Project : ACObject
     {
         public string Title = "Project";
-        public SourceFile[] Files = new SourceFile[0];
+        public List<SourceFile> Files = new List<SourceFile>();
         public Project() { }
         /// <summary>
         /// プロジェクトに空のファイルを作成し、リストに追加します。
@@ -267,8 +267,7 @@ namespace AutoCoder
         /// <returns>作成に成功したかどうか</returns>
         public bool CreateNewFile()
         {
-            Array.Resize(ref this.Files, this.Files.Length + 1);
-            this.Files[this.Files.Length - 1] = new SourceFile();
+            this.Files.Add(new SourceFile());
             return true;
         }
     }
@@ -279,7 +278,7 @@ namespace AutoCoder
     public class SourceFile : ACObject
     {
         public string FileName = "File";
-        public Namespace[] Namespaces = new Namespace[0];
+        public List<Namespace> Namespaces = new List<Namespace>();
         public SourceFile() { }
     }
 
@@ -289,10 +288,20 @@ namespace AutoCoder
     public class Namespace : ACObject
     {
         public string Name = "Nmsp";
-        public Namespace[] Namespaces = new Namespace[0];
+        public List<Namespace> Namespaces = new List<Namespace>();
         public Namespace()
         {
 
+        }
+
+        public Namespace(string name,IEnumerable<Namespace> Nmsps)
+        {
+            this.Name = name;
+            foreach(var itm in Nmsps)
+            {
+                if (itm == null) throw new Error("new Namespace():名前空間のリスト内にnullが含まれています。");
+                this.Namespaces.Add(itm);
+            }
         }
 
         public override string ToString()

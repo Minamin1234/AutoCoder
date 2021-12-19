@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Test_CS
 {
@@ -58,6 +59,18 @@ namespace Test_CS
         }
     }
 
+    public class Namespace
+    {
+        public string Name = "Nmsp";
+        public Namespace[] Namespaces = new Namespace[0];
+        public Namespace() { }
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
+    }
+
     public class Error : Exception
     {
         public Error(string Desc) : base(Desc) { }
@@ -81,6 +94,23 @@ namespace Test_CS
             //throw new Error("Error");//例外クラスのテスト
 
             TestClass t3 = new TestClass();
+            var nmsp = new Namespace();
+            for (int i = 0; i < 5;i++)
+            {
+                var itm = new Namespace();
+                Array.Resize(ref nmsp.Namespaces, nmsp.Namespaces.Length + 1);
+                nmsp.Namespaces[nmsp.Namespaces.Length - 1] = itm;
+            }
+            foreach(var itm in nmsp.Namespaces)
+            {
+                Console.WriteLine(itm);
+            }
+            var nmsp2 = new Namespace();
+            nmsp2.Namespaces = nmsp.Namespaces;
+            foreach(var itm in nmsp2.Namespaces)
+            {
+                Console.WriteLine(itm);
+            }
         }
     }
 }

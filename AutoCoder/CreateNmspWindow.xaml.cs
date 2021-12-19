@@ -35,7 +35,6 @@ namespace AutoCoder
         }
         public void Initialize()
         {
-
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -47,6 +46,8 @@ namespace AutoCoder
                 switch(this.EditProperty.EditMode)
                 {
                     case EEditMode.Create:
+                        var cNmsp = new Namespace(this.TB_Name.Text,
+                            this.LB_Nmsps.ItemsSource.Cast<Namespace>());
                         break;
                     case EEditMode.Edit:
                         break;
