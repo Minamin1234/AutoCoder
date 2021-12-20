@@ -68,5 +68,22 @@ namespace AutoCoder
             }
             return list;
         }
+
+        /// <summary>
+        /// リストボックスのアイテムを反映させます。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="listdata"></param>
+        /// <param name="listbox"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool FetchListData<T>(List<T> listdata,ListBox listbox)
+        {
+            if (listdata == null || listbox == null) throw new ArgumentNullException();
+            var list = new ObservableCollection<T>(listdata);
+            listbox.ItemsSource = list;
+            return true;
+        }
+
     }
 }
