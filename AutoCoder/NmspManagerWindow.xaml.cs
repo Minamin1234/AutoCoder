@@ -19,7 +19,7 @@ namespace AutoCoder
     /// <summary>
     /// NmspManagerWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class NmspManagerWindow : Window,IDataEditing
+    public partial class NmspManagerWindow : Window,IDataEditing<Namespace>
     {
         public WindowManager WinManager;
         public MainWindow WHander = null;
@@ -50,6 +50,8 @@ namespace AutoCoder
         {
             this.WinManager = new WindowManager(this);
             this.CurrentFile = this.WHander.CurrentFile;
+            var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
+            this.LB_Nmsp.ItemsSource = list;
             return true;
         }
 
@@ -66,11 +68,34 @@ namespace AutoCoder
             this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
         }
 
+        /// <summary>
+        /// サブウィンドウから編集・作成が完了した時（ウィンドウが閉じられる時）
+        /// に呼ばれます
+        /// </summary>
+        /// <param name="editproperty"></param>
+        /// <returns></returns>
         public bool CommitData(EDITPROPERTY<Namespace> editproperty)
         {
+            this.FetchListData();
             return true;
         }
 
+        /// <summary>
+        /// リストアイテム更新を反映させるために、リストアイテムに再代入します。
+        /// </summary>
+        public void FetchListData()
+        {
+            var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
+            this.LB_Nmsp.ItemsSource =
+                new ObservableCollection<Namespace>(
+                this.CurrentFile.Namespaces);
+        }
+
+        /// <summary>
+        /// このウィンドウが閉じられるとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.WHander.WinManager.ClearSubWindow();

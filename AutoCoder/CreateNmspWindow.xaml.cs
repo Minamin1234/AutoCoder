@@ -35,7 +35,18 @@ namespace AutoCoder
         }
         public void Initialize()
         {
-            var nlist = new ObservableCollection<Namespace>(this.EditProperty.TargetData);
+            switch(this.EditProperty.EditMode)
+            {
+                case EEditMode.Edit:
+                    var nlist = new ObservableCollection<Namespace>(
+                        this.EditProperty.TargetData[this.EditProperty.Index].Namespaces);
+                    this.LB_Nmsps.ItemsSource = nlist;
+                    break;
+                case EEditMode.Create:
+                    var nulllist = new ObservableCollection<Namespace>();
+                    this.LB_Nmsps.ItemsSource = nulllist;
+                    break;
+            }
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -57,6 +68,8 @@ namespace AutoCoder
                         break;
                 }
             }
+            var nmspmngr = (NmspManagerWindow)this.WHandler;
+            nmspmngr.CommitData(this.EditProperty);
             this.Close();
         }
 

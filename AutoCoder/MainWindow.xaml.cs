@@ -99,9 +99,9 @@ namespace AutoCoder
         }
     }
 
-    public interface IDataEditing
+    public interface IDataEditing<T>
     {
-        bool CommitData(EDITPROPERTY<Namespace> editproperty);
+        bool CommitData(EDITPROPERTY<T> editproperty);
     }
 
     /// <summary>
@@ -126,14 +126,14 @@ namespace AutoCoder
     {
         public EEditMode EditMode = EEditMode.Create;
         public List<T> TargetData = null;
-        public uint Index = 0;
+        public int Index = 0;
         public EDITPROPERTY() { }
         public EDITPROPERTY(List<T> target)
         {
             this.EditMode = EEditMode.Create;
             if (target != null) this.TargetData = target;
         }
-        public EDITPROPERTY(List<T> target,uint index)
+        public EDITPROPERTY(List<T> target,int index)
         {
             if (target != null) this.TargetData = target;
             this.Index = index;
