@@ -22,9 +22,6 @@ namespace AutoCoder
     {
         public Project CurrentProject = new Project();
         public SourceFile CurrentFile = null;
-        public Namespace[] Namespaces = new Namespace[0];
-        public Namespace CNamespace = null;
-        public Window SubWindow = null;
         public WindowManager WinManager;
         public bool IsEditing
         {
@@ -36,14 +33,11 @@ namespace AutoCoder
             InitializeComponent();
 
             //
-            var nlist = new ObservableCollection<Namespace>();
-            foreach (var itm in this.Namespaces)
-            {
-                nlist.Add(itm);
-            }
+            CurrentProject.CreateNewFile();
+            this.CurrentFile = this.CurrentProject.Files[0];
+            var nlist = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
             this.CB_namespace.ItemsSource = nlist;//
             this.WinManager = new WindowManager(this);
-            this.CurrentProject.CreateNewFile();
             this.Load();
         }
         
