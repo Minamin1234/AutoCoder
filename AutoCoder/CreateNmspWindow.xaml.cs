@@ -22,9 +22,9 @@ namespace AutoCoder
     public partial class CreateNmspWindow : Window
     {
         public Window WHandler = null;
-        public EDITPROPERTY EditProperty = null;
+        public EDITPROPERTY<Namespace> EditProperty = null;
 
-        public CreateNmspWindow(Window whandler, EDITPROPERTY editproperty)
+        public CreateNmspWindow(Window whandler, EDITPROPERTY<Namespace> editproperty)
         {
             InitializeComponent();
             this.WHandler = whandler;
@@ -35,6 +35,7 @@ namespace AutoCoder
         }
         public void Initialize()
         {
+            var nlist = new ObservableCollection<Namespace>(this.EditProperty.TargetData);
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -48,6 +49,7 @@ namespace AutoCoder
                     case EEditMode.Create:
                         var cNmsp = new Namespace(this.TB_Name.Text,
                             this.LB_Nmsps.ItemsSource.Cast<Namespace>());
+                        this.EditProperty.TargetData.Add(cNmsp);
                         break;
                     case EEditMode.Edit:
                         break;
@@ -55,10 +57,12 @@ namespace AutoCoder
                         break;
                 }
             }
+            this.Close();
         }
 
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            this.EditProperty = null;
             var NmspMngrWnd = (NmspManagerWindow)this.WHandler;
             NmspMngrWnd.WinManager.ClearSubWindow();
         }

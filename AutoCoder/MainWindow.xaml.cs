@@ -101,7 +101,7 @@ namespace AutoCoder
 
     public interface IDataEditing
     {
-        bool CommitData(EDITPROPERTY editproperty);
+        bool CommitData(EDITPROPERTY<Namespace> editproperty);
     }
 
     /// <summary>
@@ -122,18 +122,18 @@ namespace AutoCoder
     /// <summary>
     /// 操作されるデータ対象についてのプロパティクラス
     /// </summary>
-    public class EDITPROPERTY
+    public class EDITPROPERTY<T>
     {
         public EEditMode EditMode = EEditMode.Create;
-        public List<ACObject> TargetData = null;
+        public List<T> TargetData = null;
         public uint Index = 0;
         public EDITPROPERTY() { }
-        public EDITPROPERTY(List<ACObject> target)
+        public EDITPROPERTY(List<T> target)
         {
             this.EditMode = EEditMode.Create;
             if (target != null) this.TargetData = target;
         }
-        public EDITPROPERTY(List<ACObject> target,uint index)
+        public EDITPROPERTY(List<T> target,uint index)
         {
             if (target != null) this.TargetData = target;
             this.Index = index;

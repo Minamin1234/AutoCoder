@@ -60,13 +60,13 @@ namespace AutoCoder
         public void OpenCreateWindow()
         {
             string FuncName = "OpenCreateWindow:";
-            var EditProperty = new EDITPROPERTY(this.CurrentFile.Namespaces);
+            var EditProperty = new EDITPROPERTY<Namespace>(this.CurrentFile.Namespaces);
             if (this.WinManager == null) throw new Error(FuncName + "WinManagerがnullでした");
             if (this.WinManager.IsEditing) throw new Error(FuncName + "編集中です");
             this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
         }
 
-        public bool CommitData(EDITPROPERTY editproperty)
+        public bool CommitData(EDITPROPERTY<Namespace> editproperty)
         {
             return true;
         }

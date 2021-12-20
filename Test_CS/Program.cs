@@ -55,20 +55,38 @@ namespace Test_CS
         public TestClass2() { }
         public override string ToString()
         {
-            return this.SubName ;
+            return this.SubName;
         }
     }
 
     public class Namespace
     {
         public string Name = "Nmsp";
-        public Namespace[] Namespaces = new Namespace[0];
+        public List<Namespace> Namespaces;
         public Namespace() { }
+        public Namespace(string name)
+        {
+            this.Name = name;
+        }
         public override string ToString()
         {
             return this.Name;
         }
 
+    }
+
+    public class NmspWindow
+    {
+        public List<Namespace> namespacedata;
+        public NmspWindow() { }
+        public NmspWindow(List<Namespace> data)
+        {
+            this.namespacedata = new List<Namespace>(data);
+            for(int i = 0;i < 5;i++)
+            {
+                this.namespacedata.Add(new Namespace(i.ToString()));
+            }
+        }
     }
 
     public class Error : Exception
@@ -94,20 +112,14 @@ namespace Test_CS
             //throw new Error("Error");//例外クラスのテスト
 
             TestClass t3 = new TestClass();
-            var nmsp = new Namespace();
-            for (int i = 0; i < 5;i++)
+            var nmsp = new Namespace("Test01");
+            var nmsplist = new List<Namespace>();
+            for(int i = 0;i < 10;i++)
             {
-                var itm = new Namespace();
-                Array.Resize(ref nmsp.Namespaces, nmsp.Namespaces.Length + 1);
-                nmsp.Namespaces[nmsp.Namespaces.Length - 1] = itm;
+                nmsplist.Add(new Namespace(i.ToString()));
             }
-            foreach(var itm in nmsp.Namespaces)
-            {
-                Console.WriteLine(itm);
-            }
-            var nmsp2 = new Namespace();
-            nmsp2.Namespaces = nmsp.Namespaces;
-            foreach(var itm in nmsp2.Namespaces)
+            var Nmspwin = new NmspWindow(nmsplist);
+            foreach(var itm in Nmspwin.namespacedata)
             {
                 Console.WriteLine(itm);
             }
