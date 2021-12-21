@@ -84,6 +84,10 @@ namespace AutoCoder
             listbox.ItemsSource = list;
             return true;
         }
-
+        public static bool OpenCreateWindow<DT,WT>(WindowManager winmngr,List<DT> datalist)
+            where WT : Window
+        {
+            return true;
+        }
     }
 }
