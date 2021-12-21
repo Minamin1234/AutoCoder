@@ -68,6 +68,16 @@ namespace AutoCoder
             this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
         }
 
+        public void OpenCreateWindow(int target)
+        {
+            if (target == -1) return;
+            string FuncName = "OpenCreateWindow:";
+            var EditProperty = new EDITPROPERTY<Namespace>(this.CurrentFile.Namespaces,target);
+            if (this.WinManager == null) throw new Error(FuncName + "WinManagerがnullでした");
+            if (this.WinManager.IsEditing) throw new Error(FuncName + "編集中です");
+            this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
+        }
+
         /// <summary>
         /// サブウィンドウから編集・作成が完了した時（ウィンドウが閉じられる時）
         /// に呼ばれます
@@ -103,10 +113,24 @@ namespace AutoCoder
 
         private void BClicked(object sender, RoutedEventArgs e)
         {
-            var CurentButton = (Button)sender;
-            if(CurentButton.Name == B_Add.Name)
+            var CurrentButton = (Button)sender;
+            if(CurrentButton.Name == B_Add.Name)
             {
                 this.OpenCreateWindow();
+            }
+            else if(CurrentButton.Name == B_Edit.Name)
+            {
+                this.OpenCreateWindow(this.LB_Nmsp.SelectedIndex);
+            }
+            else if(CurrentButton.Name == B_Delete.Name)
+            {
+                if(this.LB_Nmsp.SelectedIndex != -1)
+                    this.CurrentFile.Namespaces.RemoveAt(this.LB_Nmsp.SelectedIndex);
+                this.FetchListData();
+            }
+            else if(CurrentButton.Name == B_OK.Name)
+            {
+                this.Close();
             }
         }
     }

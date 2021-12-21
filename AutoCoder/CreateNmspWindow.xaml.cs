@@ -41,6 +41,8 @@ namespace AutoCoder
                     var nlist = new ObservableCollection<Namespace>(
                         this.EditProperty.TargetData[this.EditProperty.Index].Namespaces);
                     this.LB_Nmsps.ItemsSource = nlist;
+                    this.TB_Name.Text =
+                        this.EditProperty.TargetData[this.EditProperty.Index].Name;
                     break;
                 case EEditMode.Create:
                     var nulllist = new ObservableCollection<Namespace>();
@@ -63,10 +65,30 @@ namespace AutoCoder
                         this.EditProperty.TargetData.Add(cNmsp);
                         break;
                     case EEditMode.Edit:
+                        this.EditProperty.TargetData[this.EditProperty.Index].Name =
+                            this.TB_Name.Text;
+                        this.EditProperty.TargetData[this.EditProperty.Index].Namespaces =
+                            new List<Namespace>(this.LB_Nmsps.ItemsSource.Cast<Namespace>());
                         break;
                     default:
                         break;
                 }
+            }
+            else if(currentbutton.Name == B_Cancel.Name)
+            {
+                this.Close();
+            }
+            else if(currentbutton.Name == B_Add.Name)
+            {
+
+            }
+            else if(currentbutton.Name == B_Edit.Name)
+            {
+
+            }
+            else if(currentbutton.Name == B_Delete.Name)
+            {
+
             }
             var nmspmngr = (NmspManagerWindow)this.WHandler;
             nmspmngr.CommitData(this.EditProperty);
