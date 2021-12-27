@@ -67,10 +67,6 @@ namespace AutoCoder
         /// <returns>ウィンドウの表示に成功したかどうか。</returns>
         public bool OpenNmspMngrWindow()
         {
-            string FuncName = "OpenNmspMngrWindw:";
-            if (this.WinManager == null) throw new Error(FuncName + "開こうとしたウィンドウがnullでした");
-            if (this.WinManager.IsEditing) throw new Error(FuncName + "既に別のウィンドウを開いています");
-            this.WinManager.OpenSetSubWindow(new NmspManagerWindow(ref this.CurrentFile, this));
             return true;
         }
 
@@ -86,7 +82,6 @@ namespace AutoCoder
 
             if(CurrentButton.Name == B_NmspMnger.Name)
             {
-                this.OpenNmspMngrWindow();
             }
         }
     }

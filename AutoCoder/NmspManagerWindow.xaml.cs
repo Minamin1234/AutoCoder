@@ -61,21 +61,11 @@ namespace AutoCoder
         /// <exception cref="Error">ウィンドウ表示時に何かしらのエラーを返します。</exception>
         public void OpenCreateWindow()
         {
-            string FuncName = "OpenCreateWindow:";
-            var EditProperty = new EDITPROPERTY<Namespace>(this.CurrentFile.Namespaces);
-            if (this.WinManager == null) throw new Error(FuncName + "WinManagerがnullでした");
-            if (this.WinManager.IsEditing) throw new Error(FuncName + "編集中です");
-            this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
         }
 
         public void OpenCreateWindow(int target)
         {
             if (target == -1) return;
-            string FuncName = "OpenCreateWindow:";
-            var EditProperty = new EDITPROPERTY<Namespace>(this.CurrentFile.Namespaces,target);
-            if (this.WinManager == null) throw new Error(FuncName + "WinManagerがnullでした");
-            if (this.WinManager.IsEditing) throw new Error(FuncName + "編集中です");
-            this.WinManager.OpenSetSubWindow(new CreateNmspWindow(this, EditProperty));
         }
 
         /// <summary>
@@ -86,7 +76,6 @@ namespace AutoCoder
         /// <returns></returns>
         public bool CommitData(EDITPROPERTY<Namespace> editproperty)
         {
-            this.FetchListData();
             return true;
         }
 
@@ -95,10 +84,6 @@ namespace AutoCoder
         /// </summary>
         public void FetchListData()
         {
-            var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
-            this.LB_Nmsp.ItemsSource =
-                new ObservableCollection<Namespace>(
-                this.CurrentFile.Namespaces);
         }
 
         /// <summary>
@@ -108,7 +93,6 @@ namespace AutoCoder
         /// <param name="e"></param>
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.WHander.WinManager.ClearSubWindow();
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -116,17 +100,12 @@ namespace AutoCoder
             var CurrentButton = (Button)sender;
             if(CurrentButton.Name == B_Add.Name)
             {
-                this.OpenCreateWindow();
             }
             else if(CurrentButton.Name == B_Edit.Name)
             {
-                this.OpenCreateWindow(this.LB_Nmsp.SelectedIndex);
             }
             else if(CurrentButton.Name == B_Delete.Name)
             {
-                if(this.LB_Nmsp.SelectedIndex != -1)
-                    this.CurrentFile.Namespaces.RemoveAt(this.LB_Nmsp.SelectedIndex);
-                this.FetchListData();
             }
             else if(CurrentButton.Name == B_OK.Name)
             {
