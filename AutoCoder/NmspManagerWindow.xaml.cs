@@ -116,6 +116,7 @@ namespace AutoCoder
         /// <param name="e"></param>
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            this.WHander.ClearSubWindow();
         }
 
         private void BClicked(object sender, RoutedEventArgs e)

@@ -59,6 +59,12 @@ namespace AutoCoder
             this.SubWindow.Show();
         }
 
+        public void ClearSubWindow()
+        {
+            if (this.SubWindow == null) return;
+            this.SubWindow = null;
+        }
+
         /// <summary>
         /// 名前空間の管理ウィンドウを表示します。
         /// エラーの場合は戻り値はfalseを返します。
