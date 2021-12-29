@@ -23,8 +23,8 @@ namespace AutoCoder
     {
         public WindowManager WinManager;
         public MainWindow WHander = null;
-        public Window SubWindow = null;
         public SourceFile CurrentFile = null;
+        protected Window SubWindow = null;
         public NmspManagerWindow()
         {
             InitializeComponent();
@@ -37,13 +37,21 @@ namespace AutoCoder
         /// <param name="TargetFile">参照対象のソースファイルクラス</param>
         /// <param name="whandler">このウィンドウを所有するメインウィンドウ</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public NmspManagerWindow(ref SourceFile TargetFile,MainWindow whandler)
+        public NmspManagerWindow(SourceFile TargetFile,MainWindow whandler)
         {
             InitializeComponent();
             if (TargetFile == null || whandler == null) throw new ArgumentNullException();
             this.WHander = whandler;
             this.CurrentFile = TargetFile;
             this.Initialize();
+        }
+
+        protected void SetSubWindow(Window nwindow)
+        {
+            if(nwindow == null) throw new ArgumentNullException();
+            if (this.SubWindow == nwindow) return;
+            this.SubWindow = nwindow;
+            this.SubWindow.Show();
         }
 
         public bool Initialize()
@@ -61,11 +69,26 @@ namespace AutoCoder
         /// <exception cref="Error">ウィンドウ表示時に何かしらのエラーを返します。</exception>
         public void OpenCreateWindow()
         {
+            if (this.SubWindow != null) throw new Error("既にウィンドウを開かれています。");
+            this.SubWindow = new CreateNmspWindow(this.CurrentFile);
         }
-
+        /// <summary>
+        /// 編集用にウィンドウを開きます。
+        /// </summary>
+        /// <param name="target">編集対象のインデックス</param>
         public void OpenCreateWindow(int target)
         {
             if (target == -1) return;
+            if (this.CurrentFile.Namespaces == null) throw new Error("CurrentFile.Namespacesがnullでした");
+            try
+            {
+                var data = this.CurrentFile.Namespaces[target];
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                throw new Error("編集しようとしているインデックスにアイテムがありませんでした。");
+            }
+            this.SetSubWindow(new CreateNmspWindow(this.CurrentFile));
         }
 
         /// <summary>
@@ -100,12 +123,15 @@ namespace AutoCoder
             var CurrentButton = (Button)sender;
             if(CurrentButton.Name == B_Add.Name)
             {
+                this.OpenCreateWindow();
             }
             else if(CurrentButton.Name == B_Edit.Name)
             {
+                this.OpenCreateWindow(this.LB_Nmsp.SelectedIndex);
             }
             else if(CurrentButton.Name == B_Delete.Name)
             {
+                this.CurrentFile.Namespaces.RemoveAt(this.LB_Nmsp.SelectedIndex);
             }
             else if(CurrentButton.Name == B_OK.Name)
             {

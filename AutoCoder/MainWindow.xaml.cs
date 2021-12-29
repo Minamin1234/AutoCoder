@@ -23,20 +23,20 @@ namespace AutoCoder
         public Project CurrentProject = new Project();
         public SourceFile CurrentFile = null;
         public WindowManager WinManager;
-        public bool IsEditing
+        protected Window SubWindow = null;
+        public bool HasSubWindow
         {
-            get { return this.CurrentFile != null; }
+            get { return this.SubWindow != null; }
         }
 
         public MainWindow()
         {
             InitializeComponent();
-
+            
             //
             CurrentProject.CreateNewFile();
-            this.CurrentFile = this.CurrentProject.Files[0];
-            var nlist = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
-            this.CB_namespace.ItemsSource = nlist;//
+            var sflist = new ObservableCollection<SourceFile>(this.CurrentProject.Files);
+            this.CB_sourcefile.ItemsSource = sflist;
             this.WinManager = new WindowManager(this);
             this.Load();
         }
@@ -48,16 +48,15 @@ namespace AutoCoder
         /// <returns>読み込みに成功したかどうか</returns>
         public bool Load()
         {
-            try
-            {
-                this.CurrentFile = this.CurrentProject.Files[0];
-            }
-            catch(NullReferenceException)
-            {
-                MessageBox.Show("NotFoundSourceFile");
-                return false;
-            }
             return true;
+        }
+
+        protected void SetSubWindow(Window nwindow)
+        {
+            if (nwindow == null) return;
+            if (this.SubWindow == nwindow) return;
+            this.SubWindow = nwindow;
+            this.SubWindow.Show();
         }
 
         /// <summary>
@@ -67,6 +66,11 @@ namespace AutoCoder
         /// <returns>ウィンドウの表示に成功したかどうか。</returns>
         public bool OpenNmspMngrWindow()
         {
+            if(this.HasSubWindow == true) return false;
+            var target = (SourceFile)this.CB_sourcefile.SelectedItem;
+            if(target == null) return false;
+            var nwindow = new NmspManagerWindow(target,this);
+            this.SetSubWindow(nwindow);
             return true;
         }
 
@@ -82,6 +86,7 @@ namespace AutoCoder
 
             if(CurrentButton.Name == B_NmspMnger.Name)
             {
+                this.OpenNmspMngrWindow();
             }
         }
     }

@@ -34,5 +34,9 @@ namespace AutoCoder
             this.Files.Add(new SourceFile());
             return true;
         }
+        public override string ToString()
+        {
+            return this.Title;
+        }
     }
 }

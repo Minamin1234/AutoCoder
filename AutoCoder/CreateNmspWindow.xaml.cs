@@ -22,6 +22,7 @@ namespace AutoCoder
     public partial class CreateNmspWindow : Window
     {
         public Window WHandler = null;
+        public SourceFile CurrentFile = null;
 
         public CreateNmspWindow() { }
         public CreateNmspWindow(Window whandler)
@@ -30,6 +31,12 @@ namespace AutoCoder
             this.WHandler = whandler;
             this.Initialize();
             
+        }
+        public CreateNmspWindow(SourceFile TargetFile)
+        {
+            InitializeComponent();
+            if (TargetFile == null) throw new ArgumentNullException();
+            this.CurrentFile = TargetFile;
         }
         public void Initialize()
         {
