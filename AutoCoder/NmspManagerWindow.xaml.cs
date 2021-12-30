@@ -46,12 +46,17 @@ namespace AutoCoder
             this.Initialize();
         }
 
-        protected void SetSubWindow(Window nwindow)
+        public void SetSubWindow(Window nwindow)
         {
             if(nwindow == null) throw new ArgumentNullException();
             if (this.SubWindow == nwindow) return;
             this.SubWindow = nwindow;
             this.SubWindow.Show();
+        }
+
+        public void ClearSubWindow()
+        {
+            this.SubWindow = null;
         }
 
         public bool Initialize()
@@ -88,18 +93,7 @@ namespace AutoCoder
             {
                 throw new Error("編集しようとしているインデックスにアイテムがありませんでした。");
             }
-            this.SetSubWindow(new CreateNmspWindow(this.CurrentFile));
-        }
-
-        /// <summary>
-        /// サブウィンドウから編集・作成が完了した時（ウィンドウが閉じられる時）
-        /// に呼ばれます
-        /// </summary>
-        /// <param name="editproperty"></param>
-        /// <returns></returns>
-        public bool CommitData(EDITPROPERTY<Namespace> editproperty)
-        {
-            return true;
+            this.SetSubWindow(new CreateNmspWindow(this.CurrentFile,target));
         }
 
         /// <summary>

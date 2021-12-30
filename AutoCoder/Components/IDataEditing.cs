@@ -18,6 +18,12 @@ namespace AutoCoder
 {
     public interface IDataEditing<T>
     {
+        void SetSubWindow(Window nwindow);
+        void ClearSubWindow();
+    }
+
+    public interface IMemo<T>
+    {
         bool CommitData(EDITPROPERTY<T> editproperty);
     }
 }

@@ -18,7 +18,7 @@ using System.Collections.ObjectModel;
 namespace AutoCoder
 {
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,IDataEditing<SourceFile>
     {
         public Project CurrentProject = new Project();
         public SourceFile CurrentFile = null;
@@ -51,7 +51,7 @@ namespace AutoCoder
             return true;
         }
 
-        protected void SetSubWindow(Window nwindow)
+        public void SetSubWindow(Window nwindow)
         {
             if (nwindow == null) return;
             if (this.SubWindow == nwindow) return;

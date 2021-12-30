@@ -69,6 +69,11 @@ namespace AutoCoder
             return list;
         }
 
+        public static ObservableCollection<T> CreateListItem<T>(List<T> item)
+        {
+            return new ObservableCollection<T>(item);
+        }
+
         /// <summary>
         /// リストボックスのアイテムを反映させます。
         /// </summary>
