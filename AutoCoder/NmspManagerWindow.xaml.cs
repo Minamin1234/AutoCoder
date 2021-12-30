@@ -19,7 +19,7 @@ namespace AutoCoder
     /// <summary>
     /// NmspManagerWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class NmspManagerWindow : Window,IDataEditing<Namespace>
+    public partial class NmspManagerWindow : Window,IDataEditing
     {
         public WindowManager WinManager;
         public MainWindow WHander = null;

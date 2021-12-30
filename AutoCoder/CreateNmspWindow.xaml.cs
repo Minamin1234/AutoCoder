@@ -19,10 +19,11 @@ namespace AutoCoder
     /// <summary>
     /// CreateNmspWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class CreateNmspWindow : Window,IDataEditing<Namespace>
+    public partial class CreateNmspWindow : Window,IDataEditing
     {
         public Window WHandler = null;
         public SourceFile CurrentFile = null;
+        public Namespace TargetSubNamespace = null;
         protected Window SubWindow = null;
         protected int TargetNmspFileIdx = -1;
 
@@ -50,9 +51,27 @@ namespace AutoCoder
             this.TargetNmspFileIdx = TargetIdx;
             this.Initialize();
         }
+
+        public CreateNmspWindow(Namespace SubNamespaces)
+        {
+            InitializeComponent();
+            if(SubNamespaces == null) throw new ArgumentNullException();
+            this.TargetSubNamespace = SubNamespaces;
+        }
+
+        //編集か新規作成かどうか・・・this.TargetNmspIdxが-1かどうか。-1が新規作成。
+        //サブウィンドウモードかどうか・・・this.CurrentFileがnullかどうか。
         public void Initialize()
         {
-            if(this.TargetNmspFileIdx != -1)
+            if(this.CurrentFile == null && this.TargetSubNamespace != null)
+            {
+                if (this.TargetNmspFileIdx == -1) return;
+                this.TB_Name.Text = this.TargetSubNamespace.Name;
+                this.LB_Nmsps.ItemsSource = this.TargetSubNamespace.Namespaces;
+                return;
+            }
+
+            if(this.CurrentFile != null && this.TargetNmspFileIdx != -1)
             {
                 this.LB_Nmsps.ItemsSource =
                     DataControl.CreateListItem<Namespace>(
@@ -78,6 +97,12 @@ namespace AutoCoder
         public void ClearSubWindow()
         {
             this.SubWindow = null;
+        }
+
+        public void OpenCreateWindow()
+        {
+            if (this.SubWindow != null) return;
+            //var nwindow = new CreateNmspWindow(this.)
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -124,7 +149,10 @@ namespace AutoCoder
 
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            var cwindow = (IDataEditing)this.WHandler;
+            if (cwindow == null) return;
+            cwindow.ClearSubWindow();
+            this.Close();
         }
     }
 }

@@ -18,7 +18,7 @@ using System.Collections.ObjectModel;
 namespace AutoCoder
 {
 
-    public partial class MainWindow : Window,IDataEditing<SourceFile>
+    public partial class MainWindow : Window,IDataEditing
     {
         public Project CurrentProject = new Project();
         public SourceFile CurrentFile = null;

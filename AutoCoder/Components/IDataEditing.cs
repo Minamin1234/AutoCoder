@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 
 namespace AutoCoder
 {
-    public interface IDataEditing<T>
+    public interface IDataEditing
     {
         void SetSubWindow(Window nwindow);
         void ClearSubWindow();
