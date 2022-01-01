@@ -22,67 +22,49 @@ namespace AutoCoder
     public partial class CreateNmspWindow : Window,IDataEditing
     {
         public Window WHandler = null;
-        public SourceFile CurrentFile = null;
-        public Namespace TargetSubNamespace = null;
+        public NmspManagerWindow WNmspMngrHandler = null;
+        public CreateNmspWindow WCrtNmspHandler = null;
+        protected Namespace TargetNmsp = null;
         protected Window SubWindow = null;
-        protected int TargetNmspFileIdx = -1;
+        protected bool _IsEdit = false;
+        protected bool IsFromMngrWnd = false;
+        public bool IsEdit
+        {
+            get { return _IsEdit; }
+        }
 
         public CreateNmspWindow() { }
         public CreateNmspWindow(Window whandler)
         {
             InitializeComponent();
+            if (whandler == null) throw new ArgumentNullException();
             this.WHandler = whandler;
+            this._IsEdit = false;
             this.Initialize();
             
         }
-        public CreateNmspWindow(SourceFile TargetFile)
+
+        public CreateNmspWindow(Window whandler,Namespace targetnmsp)
         {
             InitializeComponent();
-            if (TargetFile == null) throw new ArgumentNullException();
-            this.CurrentFile = TargetFile;
+            if (whandler == null) throw new ArgumentNullException();
+            if (targetnmsp == null) throw new ArgumentNullException();
+            this.TargetNmsp = targetnmsp;
+            this.WHandler = whandler;
+            this._IsEdit = true;
             this.Initialize();
         }
 
-        public CreateNmspWindow(SourceFile TargetFile,int TargetIdx)
-        {
-            InitializeComponent();
-            if (TargetFile == null) throw new ArgumentNullException();
-            this.CurrentFile = TargetFile;
-            this.TargetNmspFileIdx = TargetIdx;
-            this.Initialize();
-        }
-
-        public CreateNmspWindow(Namespace SubNamespaces)
-        {
-            InitializeComponent();
-            if(SubNamespaces == null) throw new ArgumentNullException();
-            this.TargetSubNamespace = SubNamespaces;
-        }
-
-        //編集か新規作成かどうか・・・this.TargetNmspIdxが-1かどうか。-1が新規作成。
-        //サブウィンドウモードかどうか・・・this.CurrentFileがnullかどうか。
         public void Initialize()
         {
-            if(this.CurrentFile == null && this.TargetSubNamespace != null)
+            if(this.TargetNmsp == null)
             {
-                if (this.TargetNmspFileIdx == -1) return;
-                this.TB_Name.Text = this.TargetSubNamespace.Name;
-                this.LB_Nmsps.ItemsSource = this.TargetSubNamespace.Namespaces;
-                return;
-            }
-
-            if(this.CurrentFile != null && this.TargetNmspFileIdx != -1)
-            {
-                this.LB_Nmsps.ItemsSource =
-                    DataControl.CreateListItem<Namespace>(
-                        this.CurrentFile.Namespaces[this.TargetNmspFileIdx].Namespaces
-                    );
-                this.TB_Name.Text = 
-                    this.CurrentFile.Namespaces[this.TargetNmspFileIdx].Name;
+                this.TargetNmsp = new Namespace();
             }
             else
             {
-
+                this.TB_Name.Text = this.TargetNmsp.Name;
+                this.LB_Nmsps.ItemsSource = this.TargetNmsp.Namespaces;
             }
         }
 
@@ -99,33 +81,45 @@ namespace AutoCoder
             this.SubWindow = null;
         }
 
+        void IDataEditing.CommitNewData(ACObject newData)
+        {
+            var cnewData = (Namespace)newData;
+            if (cnewData == null) throw new ArgumentNullException();
+
+        }
+
+        void IDataEditing.CommitEditData(ACObject editData)
+        {
+
+        }
+
         public void OpenCreateWindow()
         {
             if (this.SubWindow != null) return;
-            //var nwindow = new CreateNmspWindow(this.)
+
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
         {
             var currentbutton = (Button)sender;
-            bool IsCreateMode = this.TargetNmspFileIdx == -1;
 
             if(currentbutton.Name == B_OK.Name)
             {
-                if(IsCreateMode)
-                {
-                    var nNmsp = new Namespace(this.TB_Name.Text,
+                this.TargetNmsp.Name =
+                    this.TB_Name.Text;
+                this.TargetNmsp.Namespaces =
+                    new List<Namespace>(
                         this.LB_Nmsps.ItemsSource.Cast<Namespace>()
                         );
-                    this.CurrentFile.Namespaces.Add(nNmsp);
+
+                var target = (IDataEditing)this.WHandler;
+                if (this.IsEdit)
+                {
+                    target.CommitEditData(this.TargetNmsp);
                 }
                 else
                 {
-                    var cnmsp = this.CurrentFile.Namespaces[this.TargetNmspFileIdx];
-                    cnmsp.Name = TB_Name.Text;
-                    cnmsp.Namespaces = new List<Namespace>(
-                        this.LB_Nmsps.ItemsSource.Cast<Namespace>()
-                        );
+                    target.CommitNewData(this.TargetNmsp);
                 }
                 this.Close();
             }

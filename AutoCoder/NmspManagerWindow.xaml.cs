@@ -46,7 +46,7 @@ namespace AutoCoder
             this.Initialize();
         }
 
-        public void SetSubWindow(Window nwindow)
+        void IDataEditing.SetSubWindow(Window nwindow)
         {
             if(nwindow == null) throw new ArgumentNullException();
             if (this.SubWindow == nwindow) return;
@@ -54,9 +54,22 @@ namespace AutoCoder
             this.SubWindow.Show();
         }
 
-        public void ClearSubWindow()
+        void IDataEditing.ClearSubWindow()
         {
             this.SubWindow = null;
+        }
+
+        void IDataEditing.CommitNewData(ACObject newData)
+        {
+            var cnewdata = (Namespace)newData;
+            if (cnewdata == null) throw new ArgumentNullException();
+            this.CurrentFile.Namespaces.Add(cnewdata);
+        }
+
+        void IDataEditing.CommitEditData(ACObject editData)
+        {
+            var ceditdata = (Namespace)editData;
+            if (ceditdata == null) throw new ArgumentNullException();
         }
 
         public bool Initialize()
@@ -75,7 +88,6 @@ namespace AutoCoder
         public void OpenCreateWindow()
         {
             if (this.SubWindow != null) throw new Error("既にウィンドウを開かれています。");
-            this.SubWindow = new CreateNmspWindow(this.CurrentFile);
         }
         /// <summary>
         /// 編集用にウィンドウを開きます。
@@ -85,15 +97,6 @@ namespace AutoCoder
         {
             if (target == -1) return;
             if (this.CurrentFile.Namespaces == null) throw new Error("CurrentFile.Namespacesがnullでした");
-            try
-            {
-                var data = this.CurrentFile.Namespaces[target];
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                throw new Error("編集しようとしているインデックスにアイテムがありませんでした。");
-            }
-            this.SetSubWindow(new CreateNmspWindow(this.CurrentFile,target));
         }
 
         /// <summary>
@@ -118,11 +121,9 @@ namespace AutoCoder
             var CurrentButton = (Button)sender;
             if(CurrentButton.Name == B_Add.Name)
             {
-                this.OpenCreateWindow();
             }
             else if(CurrentButton.Name == B_Edit.Name)
             {
-                this.OpenCreateWindow(this.LB_Nmsp.SelectedIndex);
             }
             else if(CurrentButton.Name == B_Delete.Name)
             {

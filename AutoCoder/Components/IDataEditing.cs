@@ -20,6 +20,8 @@ namespace AutoCoder
     {
         void SetSubWindow(Window nwindow);
         void ClearSubWindow();
+        void CommitNewData(ACObject newData);
+        void CommitEditData(ACObject editData);
     }
 
     public interface IMemo<T>
