@@ -22,12 +22,11 @@ namespace AutoCoder
     public partial class CreateNmspWindow : Window,IDataEditing
     {
         public Window WHandler = null;
-        public NmspManagerWindow WNmspMngrHandler = null;
-        public CreateNmspWindow WCrtNmspHandler = null;
         protected Namespace TargetNmsp = null;
         protected Window SubWindow = null;
         protected bool _IsEdit = false;
         protected bool IsFromMngrWnd = false;
+        protected int TargetIdx = -1;
         public bool IsEdit
         {
             get { return _IsEdit; }
@@ -44,14 +43,16 @@ namespace AutoCoder
             
         }
 
-        public CreateNmspWindow(Window whandler,Namespace targetnmsp)
+        public CreateNmspWindow(Window whandler,Namespace targetnmsp,int targetidx)
         {
             InitializeComponent();
             if (whandler == null) throw new ArgumentNullException();
             if (targetnmsp == null) throw new ArgumentNullException();
+            if (targetidx == -1) throw new Error("編集対象のインデックスが指定されていません。");
             this.TargetNmsp = targetnmsp;
             this.WHandler = whandler;
             this._IsEdit = true;
+            this.TargetIdx = targetidx;
             this.Initialize();
         }
 
@@ -85,18 +86,33 @@ namespace AutoCoder
         {
             var cnewData = (Namespace)newData;
             if (cnewData == null) throw new ArgumentNullException();
-
+            this.TargetNmsp.Namespaces.Add(cnewData);
         }
 
-        void IDataEditing.CommitEditData(ACObject editData)
+        void IDataEditing.FinishedEditingData()
         {
 
         }
 
-        public void OpenCreateWindow()
+        void IDataEditing.OpenCreateWindow()
         {
             if (this.SubWindow != null) return;
+            var nwindow = new CreateNmspWindow(this);
+            this.SetSubWindow(nwindow);
+            nwindow.Show();
+        }
 
+        void IDataEditing.OpenCreateWindow(ACObject targetdata)
+        {
+            var cTargetdata = (Namespace)targetdata;
+            if(cTargetdata == null) throw new ArgumentNullException();
+            if (this.LB_Nmsps.SelectedIndex == -1) throw new Error("インデックスが指定されていません。");
+            var nwindow = new CreateNmspWindow(
+                this,
+                cTargetdata,
+                this.LB_Nmsps.SelectedIndex
+                );
+            this.SetSubWindow(nwindow);
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -111,14 +127,9 @@ namespace AutoCoder
                     new List<Namespace>(
                         this.LB_Nmsps.ItemsSource.Cast<Namespace>()
                         );
-
-                var target = (IDataEditing)this.WHandler;
-                if (this.IsEdit)
+                if (!this.IsEdit)
                 {
-                    target.CommitEditData(this.TargetNmsp);
-                }
-                else
-                {
+                    var target = (IDataEditing)this.WHandler;
                     target.CommitNewData(this.TargetNmsp);
                 }
                 this.Close();
@@ -129,15 +140,19 @@ namespace AutoCoder
             }
             else if(currentbutton.Name == B_Add.Name)
             {
-
+                var cself = (IDataEditing)this;
+                cself.OpenCreateWindow();
             }
             else if(currentbutton.Name == B_Edit.Name)
             {
-
+                var cself = (IDataEditing)this;
+                var target = (Namespace)LB_Nmsps.SelectedItem;
+                if(target == null) throw new ArgumentNullException("target");
+                cself.OpenCreateWindow(target);
             }
             else if(currentbutton.Name == B_Delete.Name)
             {
-
+                this.TargetNmsp.Namespaces.RemoveAt(this.LB_Nmsps.SelectedIndex);
             }
         }
 

@@ -51,7 +51,7 @@ namespace AutoCoder
             return true;
         }
 
-        public void SetSubWindow(Window nwindow)
+        void IDataEditing.SetSubWindow(Window nwindow)
         {
             if (nwindow == null) return;
             if (this.SubWindow == nwindow) return;
@@ -59,10 +59,30 @@ namespace AutoCoder
             this.SubWindow.Show();
         }
 
-        public void ClearSubWindow()
+        void IDataEditing.ClearSubWindow()
         {
             if (this.SubWindow == null) return;
             this.SubWindow = null;
+        }
+
+        void IDataEditing.OpenCreateWindow()
+        {
+
+        }
+
+        void IDataEditing.OpenCreateWindow(ACObject targetdata)
+        {
+
+        }
+
+        void IDataEditing.CommitNewData(ACObject newData)
+        {
+
+        }
+
+        void IDataEditing.FinishedEditingData()
+        {
+
         }
 
         /// <summary>
@@ -76,7 +96,8 @@ namespace AutoCoder
             var target = (SourceFile)this.CB_sourcefile.SelectedItem;
             if(target == null) return false;
             var nwindow = new NmspManagerWindow(target,this);
-            this.SetSubWindow(nwindow);
+            var iself = (IDataEditing)this;
+            iself.SetSubWindow(nwindow);
             return true;
         }
 

@@ -66,10 +66,9 @@ namespace AutoCoder
             this.CurrentFile.Namespaces.Add(cnewdata);
         }
 
-        void IDataEditing.CommitEditData(ACObject editData)
+        void IDataEditing.FinishedEditingData()
         {
-            var ceditdata = (Namespace)editData;
-            if (ceditdata == null) throw new ArgumentNullException();
+
         }
 
         public bool Initialize()
@@ -85,18 +84,30 @@ namespace AutoCoder
         /// 新規作成用に編集ウィンドウを開きます。
         /// </summary>
         /// <exception cref="Error">ウィンドウ表示時に何かしらのエラーを返します。</exception>
-        public void OpenCreateWindow()
+        void IDataEditing.OpenCreateWindow()
         {
-            if (this.SubWindow != null) throw new Error("既にウィンドウを開かれています。");
+            var cself = (IDataEditing)this;
+            var nwindow = new CreateNmspWindow(this);
+            cself.SetSubWindow(nwindow);
         }
+
         /// <summary>
         /// 編集用にウィンドウを開きます。
         /// </summary>
         /// <param name="target">編集対象のインデックス</param>
-        public void OpenCreateWindow(int target)
+        void IDataEditing.OpenCreateWindow(ACObject targetdata)
         {
-            if (target == -1) return;
+            var ctargetdata = (Namespace)targetdata;
+            if (ctargetdata == null) return;
             if (this.CurrentFile.Namespaces == null) throw new Error("CurrentFile.Namespacesがnullでした");
+            if (this.LB_Nmsp.SelectedItem == null || this.LB_Nmsp.SelectedIndex == -1) throw new Error("アイテムが選択されていません。");
+            var cself = (IDataEditing)this;
+            var nwindow = new CreateNmspWindow(
+                this,
+                ctargetdata,
+                this.LB_Nmsp.SelectedIndex
+                );
+            cself.SetSubWindow(nwindow);
         }
 
         /// <summary>
@@ -113,17 +124,24 @@ namespace AutoCoder
         /// <param name="e"></param>
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.WHander.ClearSubWindow();
+            var iwhandler = (IDataEditing)this.WHander;
+            if (iwhandler == null) throw new Error("インタフェースを持つウィンドウクラスではありません。");
+            iwhandler.ClearSubWindow();
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
         {
             var CurrentButton = (Button)sender;
+            var iself = (IDataEditing)this;
+
             if(CurrentButton.Name == B_Add.Name)
             {
+                iself.OpenCreateWindow();
             }
             else if(CurrentButton.Name == B_Edit.Name)
             {
+                var item = (Namespace)this.LB_Nmsp.SelectedItem;
+                iself.OpenCreateWindow(item);
             }
             else if(CurrentButton.Name == B_Delete.Name)
             {
