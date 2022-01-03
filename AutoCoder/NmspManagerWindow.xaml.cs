@@ -21,7 +21,6 @@ namespace AutoCoder
     /// </summary>
     public partial class NmspManagerWindow : Window,IDataEditing
     {
-        public WindowManager WinManager;
         public MainWindow WHander = null;
         public SourceFile CurrentFile = null;
         protected Window SubWindow = null;

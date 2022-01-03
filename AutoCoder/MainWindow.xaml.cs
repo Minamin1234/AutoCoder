@@ -21,7 +21,6 @@ namespace AutoCoder
     public partial class MainWindow : Window,IDataEditing
     {
         public Project CurrentProject = new Project();
-        public SourceFile CurrentFile = null;
         public WindowManager WinManager;
         protected Window SubWindow = null;
         public bool HasSubWindow
