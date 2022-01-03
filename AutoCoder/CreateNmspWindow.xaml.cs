@@ -69,6 +69,12 @@ namespace AutoCoder
             }
         }
 
+        public void ReLoadListData()
+        {
+            this.LB_Nmsps.ItemsSource =
+                new List<Namespace>(this.TargetNmsp.Namespaces);
+        }
+
         public void SetSubWindow(Window nwindow)
         {
             if(nwindow == null) throw new ArgumentNullException();
@@ -80,6 +86,7 @@ namespace AutoCoder
         public void ClearSubWindow()
         {
             this.SubWindow = null;
+            this.ReLoadListData();
         }
 
         void IDataEditing.CommitNewData(ACObject newData)
@@ -113,6 +120,7 @@ namespace AutoCoder
                 this.LB_Nmsps.SelectedIndex
                 );
             this.SetSubWindow(nwindow);
+            nwindow.Show();
         }
 
         private void BClicked(object sender, RoutedEventArgs e)
@@ -123,10 +131,12 @@ namespace AutoCoder
             {
                 this.TargetNmsp.Name =
                     this.TB_Name.Text;
-                this.TargetNmsp.Namespaces =
-                    new List<Namespace>(
-                        this.LB_Nmsps.ItemsSource.Cast<Namespace>()
-                        );
+                if(this.LB_Nmsps.ItemsSource != null)
+                {
+                    this.TargetNmsp.Namespaces =
+                    new List<Namespace>(this.LB_Nmsps.ItemsSource.Cast<Namespace>());
+                }
+
                 if (!this.IsEdit)
                 {
                     var target = (IDataEditing)this.WHandler;
@@ -154,6 +164,8 @@ namespace AutoCoder
             {
                 this.TargetNmsp.Namespaces.RemoveAt(this.LB_Nmsps.SelectedIndex);
             }
+
+            this.ReLoadListData();
         }
 
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -161,7 +173,6 @@ namespace AutoCoder
             var cwindow = (IDataEditing)this.WHandler;
             if (cwindow == null) return;
             cwindow.ClearSubWindow();
-            this.Close();
         }
     }
 }

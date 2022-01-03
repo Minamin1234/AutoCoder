@@ -35,6 +35,8 @@ namespace AutoCoder
             
             //
             CurrentProject.CreateNewFile();
+            var nnmsp = new Namespace("Sample", new List<Namespace>());
+            CurrentProject.Files[0].Namespaces.Add(nnmsp);
             var sflist = new ObservableCollection<SourceFile>(this.CurrentProject.Files);
             this.CB_sourcefile.ItemsSource = sflist;
             this.WinManager = new WindowManager(this);

@@ -57,6 +57,7 @@ namespace AutoCoder
         void IDataEditing.ClearSubWindow()
         {
             this.SubWindow = null;
+            this.ReLoadListData();
         }
 
         void IDataEditing.CommitNewData(ACObject newData)
@@ -68,13 +69,10 @@ namespace AutoCoder
 
         void IDataEditing.FinishedEditingData()
         {
-
         }
 
         public bool Initialize()
         {
-            this.WinManager = new WindowManager(this);
-            this.CurrentFile = this.WHander.CurrentFile;
             var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
             this.LB_Nmsp.ItemsSource = list;
             return true;
@@ -113,8 +111,10 @@ namespace AutoCoder
         /// <summary>
         /// リストアイテム更新を反映させるために、リストアイテムに再代入します。
         /// </summary>
-        public void FetchListData()
+        public void ReLoadListData()
         {
+            this.LB_Nmsp.ItemsSource =
+                new List<Namespace>(this.CurrentFile.Namespaces);
         }
 
         /// <summary>
@@ -151,6 +151,7 @@ namespace AutoCoder
             {
                 this.Close();
             }
+            this.ReLoadListData();
         }
     }
 }
