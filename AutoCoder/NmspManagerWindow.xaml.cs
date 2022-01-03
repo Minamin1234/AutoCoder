@@ -46,6 +46,11 @@ namespace AutoCoder
             this.Initialize();
         }
 
+        /// <summary>
+        /// このウィンドウのサブウィンドウを登録します。
+        /// </summary>
+        /// <param name="nwindow">登録するサブウィンドウ</param>
+        /// <exception cref="ArgumentNullException">指定したサブウィンドウが無効場合に発生します。</exception>
         void IDataEditing.SetSubWindow(Window nwindow)
         {
             if(nwindow == null) throw new ArgumentNullException();
@@ -54,12 +59,21 @@ namespace AutoCoder
             this.SubWindow.Show();
         }
 
+        /// <summary>
+        /// このウィンドウのサブウィンドウの登録を削除します。
+        /// </summary>
         void IDataEditing.ClearSubWindow()
         {
             this.SubWindow = null;
             this.ReLoadListData();
         }
 
+        /// <summary>
+        /// 新規データの作成が完了した際に呼ばれるイベント。
+        /// 送られた新規データをデータリストに追加します。
+        /// </summary>
+        /// <param name="newData">新規データ</param>
+        /// <exception cref="ArgumentNullException">送る新規データが無効の場合に発生します。</exception>
         void IDataEditing.CommitNewData(ACObject newData)
         {
             var cnewdata = (Namespace)newData;
@@ -71,6 +85,11 @@ namespace AutoCoder
         {
         }
 
+        /// <summary>
+        /// 初期化処理
+        /// ソースファイルデータから名前空間データをリストボックスに反映させます。
+        /// </summary>
+        /// <returns>成功したかどうか</returns>
         public bool Initialize()
         {
             var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
@@ -129,6 +148,11 @@ namespace AutoCoder
             iwhandler.ClearSubWindow();
         }
 
+        /// <summary>
+        /// ウィンドウ内のどれかのボタンが押された時。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BClicked(object sender, RoutedEventArgs e)
         {
             var CurrentButton = (Button)sender;

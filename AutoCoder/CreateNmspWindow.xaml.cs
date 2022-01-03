@@ -21,18 +21,44 @@ namespace AutoCoder
     /// </summary>
     public partial class CreateNmspWindow : Window,IDataEditing
     {
+        /// <summary>
+        /// 本ウィンドウを所有するウィンドウ。
+        /// </summary>
         public Window WHandler = null;
+        /// <summary>
+        /// 編集対象の名前空間データ
+        /// </summary>
         protected Namespace TargetNmsp = null;
+        /// <summary>
+        /// 本ウィンドウのサブウィンドウ
+        /// </summary>
         protected Window SubWindow = null;
+        /// <summary>
+        /// _このウィンドウではデータ編集モードであるかどうか。
+        /// </summary>
         protected bool _IsEdit = false;
-        protected bool IsFromMngrWnd = false;
+        /// <summary>
+        /// （編集モードのみ）データリストから取得したデータインデックス
+        /// -1は新規作成モードを表します。
+        /// </summary>
         protected int TargetIdx = -1;
+        /// <summary>
+        /// このウィンドウではデータ編集モードであるかどうか。
+        /// </summary>
         public bool IsEdit
         {
             get { return _IsEdit; }
         }
 
+        /// <summary>
+        /// この方法での初期化は推奨されません。
+        /// </summary>
         public CreateNmspWindow() { }
+        /// <summary>
+        /// 新規作成モードでウィンドウを初期化します。
+        /// </summary>
+        /// <param name="whandler">このウィンドウを所有するウィンドウ（＝親ウィンドウ）</param>
+        /// <exception cref="ArgumentNullException">指定した所有ウィンドウが無効の場合に発生します。</exception>
         public CreateNmspWindow(Window whandler)
         {
             InitializeComponent();
@@ -43,6 +69,14 @@ namespace AutoCoder
             
         }
 
+        /// <summary>
+        /// データ編集モードでウィンドウを初期化します。
+        /// </summary>
+        /// <param name="whandler">このウィンドウを所有するウィンドウ（＝親ウィンドウ）</param>
+        /// <param name="targetnmsp">編集対象のデータ</param>
+        /// <param name="targetidx">対象のデータがあるリストのインデックス</param>
+        /// <exception cref="ArgumentNullException">指定した所有ウィンドウやデータが無効の場合に発生します。</exception>
+        /// <exception cref="Error">インデックスが指定されていない場合に発生します。</exception>
         public CreateNmspWindow(Window whandler,Namespace targetnmsp,int targetidx)
         {
             InitializeComponent();
@@ -56,6 +90,11 @@ namespace AutoCoder
             this.Initialize();
         }
 
+        /// <summary>
+        /// 初期化処理。
+        /// 新規作成モードは新規データを作成、
+        /// 編集モードは編集対象のデータからパラメータをウィンドウに反映させます。
+        /// </summary>
         public void Initialize()
         {
             if(this.TargetNmsp == null)
@@ -69,12 +108,21 @@ namespace AutoCoder
             }
         }
 
+        /// <summary>
+        /// リストボックスのデータを再読み込みします。
+        /// </summary>
         public void ReLoadListData()
         {
             this.LB_Nmsps.ItemsSource =
                 new List<Namespace>(this.TargetNmsp.Namespaces);
         }
 
+        /// <summary>
+        /// このウィンドウのサブウィンドウを登録します。表示は行いません。
+        /// </summary>
+        /// <param name="nwindow">登録するサブウィンドウ</param>
+        /// <exception cref="ArgumentNullException">指定したサブウィンドウが無効の場合に発生します。</exception>
+        /// <exception cref="Error">既にサブウィンドウが登録されている場合に発生します。</exception>
         public void SetSubWindow(Window nwindow)
         {
             if(nwindow == null) throw new ArgumentNullException();
@@ -83,12 +131,21 @@ namespace AutoCoder
             this.SubWindow = nwindow;
         }
 
+        /// <summary>
+        /// 登録されているサブウィンドウを削除します。
+        /// </summary>
         public void ClearSubWindow()
         {
             this.SubWindow = null;
             this.ReLoadListData();
         }
 
+        /// <summary>
+        /// 新規のデータが作成完了した際のイベント
+        /// ここでは、作成したデータが送られ、受け取ったデータをデータリストに追加します。
+        /// </summary>
+        /// <param name="newData">新規作成したデータ</param>
+        /// <exception cref="ArgumentNullException">指定したデータが無効の場合に発生します。</exception>
         void IDataEditing.CommitNewData(ACObject newData)
         {
             var cnewData = (Namespace)newData;
@@ -96,11 +153,17 @@ namespace AutoCoder
             this.TargetNmsp.Namespaces.Add(cnewData);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void IDataEditing.FinishedEditingData()
         {
 
         }
 
+        /// <summary>
+        /// 新規作成用にサブウィンドウを開きます。
+        /// </summary>
         void IDataEditing.OpenCreateWindow()
         {
             if (this.SubWindow != null) return;
@@ -109,6 +172,12 @@ namespace AutoCoder
             nwindow.Show();
         }
 
+        /// <summary>
+        /// 編集用にサブウィンドウを開きます。
+        /// </summary>
+        /// <param name="targetdata"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="Error"></exception>
         void IDataEditing.OpenCreateWindow(ACObject targetdata)
         {
             var cTargetdata = (Namespace)targetdata;
@@ -123,6 +192,12 @@ namespace AutoCoder
             nwindow.Show();
         }
 
+        /// <summary>
+        /// ウィンドウ内のどれかのボタンが押された時。
+        /// </summary>
+        /// <param name="sender">イベントの発信したオブジェクト</param>
+        /// <param name="e">イベント発信に伴うデータ</param>
+        /// <exception cref="ArgumentNullException">選択したアイテムがない場合に発生します。</exception>
         private void BClicked(object sender, RoutedEventArgs e)
         {
             var currentbutton = (Button)sender;
@@ -168,8 +243,15 @@ namespace AutoCoder
             this.ReLoadListData();
         }
 
+        /// <summary>
+        /// このウィンドウが閉じられる時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //このウィンドウの所有者のインタフェースを通して
+            //所有者のサブウィンドウの登録を消去します。
             var cwindow = (IDataEditing)this.WHandler;
             if (cwindow == null) return;
             cwindow.ClearSubWindow();
