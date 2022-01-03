@@ -230,10 +230,17 @@ namespace AutoCoder
             }
             else if(currentbutton.Name == B_Edit.Name)
             {
-                var cself = (IDataEditing)this;
-                var target = (Namespace)LB_Nmsps.SelectedItem;
-                if(target == null) throw new ArgumentNullException("target");
-                cself.OpenCreateWindow(target);
+                try
+                {
+                    var cself = (IDataEditing)this;
+                    var target = (Namespace)LB_Nmsps.SelectedItem;
+                    if (target == null) throw new Error("アイテムが選択されていません。");
+                    cself.OpenCreateWindow(target);
+                }
+                catch (Error E)
+                {
+                    MessageBox.Show(E.Message, "エラー", default, MessageBoxImage.Information);
+                }
             }
             else if(currentbutton.Name == B_Delete.Name)
             {

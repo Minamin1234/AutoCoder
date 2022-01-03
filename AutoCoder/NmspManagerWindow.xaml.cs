@@ -163,8 +163,20 @@ namespace AutoCoder
             }
             else if(CurrentButton.Name == B_Edit.Name)
             {
-                var item = (Namespace)this.LB_Nmsp.SelectedItem;
-                iself.OpenCreateWindow(item);
+                try
+                {
+                    var item = (Namespace)this.LB_Nmsp.SelectedItem;
+                    iself.OpenCreateWindow(item);
+                }
+                catch (Error E)
+                {
+                    MessageBox.Show(
+                        E.Message,
+                        "エラー",
+                        default,
+                        MessageBoxImage.Information
+                        );
+                }
             }
             else if(CurrentButton.Name == B_Delete.Name)
             {

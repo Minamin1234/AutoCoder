@@ -95,10 +95,17 @@ namespace AutoCoder
         {
             if(this.HasSubWindow == true) return false;
             var target = (SourceFile)this.CB_sourcefile.SelectedItem;
-            if(target == null) return false;
-            var nwindow = new NmspManagerWindow(target,this);
-            var iself = (IDataEditing)this;
-            iself.SetSubWindow(nwindow);
+            if (target == null) throw new Error("対象のデータが選択されていません。");
+            try
+            {
+                var nwindow = new NmspManagerWindow(target, this);
+                var iself = (IDataEditing)this;
+                iself.SetSubWindow(nwindow);
+            }
+            catch(ArgumentNullException)
+            {
+                MessageBox.Show("対象のファイルがnullでした。", "エラー", default, MessageBoxImage.Error);
+            }
             return true;
         }
 
@@ -114,7 +121,11 @@ namespace AutoCoder
 
             if(CurrentButton.Name == B_NmspMnger.Name)
             {
-                this.OpenNmspMngrWindow();
+                try { this.OpenNmspMngrWindow(); }
+                catch (Error E)
+                {
+                    MessageBox.Show(E.Message, "エラー", default, MessageBoxImage.Information);
+                }
             }
         }
     }
