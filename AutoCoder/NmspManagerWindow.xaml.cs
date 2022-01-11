@@ -55,7 +55,6 @@ namespace AutoCoder
             if(nwindow == null) throw new ArgumentNullException();
             if (this.SubWindow == nwindow) return;
             this.SubWindow = nwindow;
-            this.SubWindow.Show();
         }
 
         /// <summary>

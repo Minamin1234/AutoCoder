@@ -22,6 +22,7 @@ namespace AutoCoder
     /// </summary>
     public class ACObject
     {
+        public string Name = "ACObject";
         public ACObject() { }
     }
 }

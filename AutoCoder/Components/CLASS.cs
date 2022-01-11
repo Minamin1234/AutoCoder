@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoCoder
 {
-    public class CLASS
+    public class CLASS : ACObject
     {
         public string ClassName = "Class";
         public CLASS() { }
