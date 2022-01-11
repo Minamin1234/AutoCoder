@@ -69,8 +69,8 @@ namespace AutoCoder
         void IDataEditing.OpenCreateWindow()
         {
             var iself = (IDataEditing)this;
-            //var nwindow = new CreateClsWindow(this);
-            //iself.SetSubWindow(nwindow);
+            var nwindow = new CreateClsWindow(this);
+            iself.SetSubWindow(nwindow);
         }
 
         void IDataEditing.OpenCreateWindow(ACObject targetdata)
@@ -79,12 +79,12 @@ namespace AutoCoder
             if (targetdata == null) throw new Error("targetdataがnullでした");
             if (this.LB_classes.SelectedItem == null) throw new Error("データが選択されていません。");
             var iself = (IDataEditing)this;
-            /*var nwindow = new CreateClsWindow(
+            var nwindow = new CreateClsWindow(
                 this,
                 ctargetdata,
-                this.LB_classes.SelectedItem
+                this.LB_classes.SelectedIndex
                 );
-            iself.SetSubWindow(nwindow);*/
+            iself.SetSubWindow(nwindow);
         }
 
         public void ReloadListData()
