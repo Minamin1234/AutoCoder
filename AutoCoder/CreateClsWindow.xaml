@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCoder"
         mc:Ignorable="d"
-        Title="CreateClsWindow" Height="450" Width="800">
+        Title="CreateClsWindow" Height="450" Width="800" Closing="WClosing">
     <Grid>
         <TextBox x:Name="TB_classname" HorizontalAlignment="Left" Height="23" Margin="88,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBlock x:Name="T_classname" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="ClassName" VerticalAlignment="Top" FontSize="14" Height="23"/>
@@ -21,8 +21,8 @@
         <ListBox x:Name="LB_functions" HorizontalAlignment="Left" Height="154" Margin="396,255,0,0" VerticalAlignment="Top" Width="386"/>
         <TextBlock x:Name="T_classvariables" HorizontalAlignment="Left" Margin="10,202,0,0" TextWrapping="Wrap" Text="Class Variables" VerticalAlignment="Top" FontSize="14" Height="23" Width="381"/>
         <TextBlock x:Name="T_classfunctions" HorizontalAlignment="Left" Margin="396,202,0,0" TextWrapping="Wrap" Text="Class Functions" VerticalAlignment="Top" FontSize="14" Height="23" Width="386"/>
-        <Button x:Name="B_variablemanager" Content="Variable Manager..." HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="381"/>
-        <Button x:Name="B_functionmanager" Content="Function Manager..." HorizontalAlignment="Left" Margin="396,230,0,0" VerticalAlignment="Top" Width="386"/>
+        <Button x:Name="B_variablemanager" Content="Variable Manager..." HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="381" Click="B_Clicked"/>
+        <Button x:Name="B_functionmanager" Content="Function Manager..." HorizontalAlignment="Left" Margin="396,230,0,0" VerticalAlignment="Top" Width="386" Click="B_Clicked"/>
 
     </Grid>
 </Window>
