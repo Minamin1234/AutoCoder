@@ -38,7 +38,7 @@ namespace AutoCoder
 
         public void Initialize()
         {
-
+            this.LB_classes.ItemsSource = this.CurrentFile.Classes;
         }
 
         void IDataEditing.SetSubWindow(Window nwindow)

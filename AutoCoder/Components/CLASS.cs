@@ -8,6 +8,11 @@ namespace AutoCoder
 {
     public class CLASS
     {
+        public string ClassName = "Class";
         public CLASS() { }
+        public override string ToString()
+        {
+            return this.ClassName;
+        }
     }
 }

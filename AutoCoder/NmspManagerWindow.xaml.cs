@@ -91,8 +91,7 @@ namespace AutoCoder
         /// <returns>成功したかどうか</returns>
         public bool Initialize()
         {
-            var list = new ObservableCollection<Namespace>(this.CurrentFile.Namespaces);
-            this.LB_Nmsp.ItemsSource = list;
+            this.LB_Nmsp.ItemsSource = this.CurrentFile.Namespaces;
             return true;
         }
 

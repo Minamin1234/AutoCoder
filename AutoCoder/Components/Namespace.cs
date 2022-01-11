@@ -23,6 +23,7 @@ namespace AutoCoder
     {
         public string Name = "Nmsp";
         public List<Namespace> Namespaces = new List<Namespace>();
+        public List<CLASS> Classes = new List<CLASS>();
         public Namespace()
         {
 
@@ -36,6 +37,14 @@ namespace AutoCoder
                 if (itm == null) throw new Error("new Namespace():名前空間のリスト内にnullが含まれています。");
                 this.Namespaces.Add(itm);
             }
+        }
+
+        public Namespace(string name,IEnumerable<Namespace> Nmsps,IEnumerable<CLASS> Clses)
+        {
+            if (Nmsps == null || Clses == null) throw new ArgumentNullException();
+            this.Name = name;
+            this.Namespaces = new List<Namespace>(Nmsps);
+            this.Classes = new List<CLASS>(Clses);
         }
 
         public override string ToString()
