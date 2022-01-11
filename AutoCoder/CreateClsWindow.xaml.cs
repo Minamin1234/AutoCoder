@@ -19,21 +19,47 @@ namespace AutoCoder
     /// </summary>
     public partial class CreateClsWindow : Window,IDataEditing
     {
+        /// <summary>
+        /// 本ウィンドウを所有するウィンドウ。
+        /// </summary>
         public Window WHandler = null;
+        /// <summary>
+        /// 編集対象のクラスデータ
+        /// </summary>
         protected CLASS TargetCls = null;
+        /// <summary>
+        /// 本ウィンドウのサブウィンドウ
+        /// </summary>
         protected Window SubWindow = null;
+        /// <summary>
+        /// _このウィンドウではデータを編集中かどうかを格納します。
+        /// </summary>
         protected bool _IsEdit = false;
+        /// <summary>
+        /// データリストのインデックス
+        /// </summary>
         protected int TargetIdx = -1;
+        /// <summary>
+        /// このウィンドウではデータを編集しているかどうかを返します。
+        /// </summary>
         public bool IsEdit
         {
             get { return this._IsEdit; }
         }
 
+        /// <summary>
+        /// この方法での初期化は推奨されません。
+        /// </summary>
         public CreateClsWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 新規作成モードでウィンドウを初期化します。
+        /// </summary>
+        /// <param name="whandler">このウィンドウを所有するウィンドウ</param>
+        /// <exception cref="ArgumentNullException">指定したウィンドウがnullだった場合</exception>
         public CreateClsWindow(Window whandler)
         {
             InitializeComponent();
@@ -43,6 +69,14 @@ namespace AutoCoder
             this.Initialize();
         }
 
+        /// <summary>
+        /// 編集モードでウィンドウを初期化します。
+        /// </summary>
+        /// <param name="whandler">このウィンドウを所有するウィンドウ</param>
+        /// <param name="targetcls">編集するクラスデータ</param>
+        /// <param name="targetidx">クラスデータが格納されているデータリストのインデックス</param>
+        /// <exception cref="ArgumentNullException">引数のどれかがnullだった場合</exception>
+        /// <exception cref="Error">インデックスが-1以外のに指定されなかった場合</exception>
         public CreateClsWindow(Window whandler,CLASS targetcls,int targetidx)
         {
             InitializeComponent();
@@ -55,11 +89,16 @@ namespace AutoCoder
             this.Initialize();
         }
 
+        /// <summary>
+        /// これはどのコンストラクタでも呼ばれます。
+        /// モードに応じてウィンドウを初期化します。
+        /// </summary>
         public void Initialize()
         {
             if(this.IsEdit)
             {
                 this.TB_classname.Text = this.TargetCls.ClassName;
+                this.LB_classes.ItemsSource = this.TargetCls.Classes;
             }
             else
             {
@@ -67,6 +106,12 @@ namespace AutoCoder
             }
         }
 
+        /// <summary>
+        /// サブウィンドウとして、ウィンドウを登録します。
+        /// </summary>
+        /// <param name="nwindow">サブウィンドウとして登録するウィンドウ</param>
+        /// <exception cref="ArgumentNullException">指定したウィンドウがnullだった場合</exception>
+        /// <exception cref="Error">既に別のウィンドウが登録されていたり、開かれている場合</exception>
         void IDataEditing.SetSubWindow(Window nwindow)
         {
             if (nwindow == null) throw new ArgumentNullException();
@@ -75,11 +120,19 @@ namespace AutoCoder
             this.SubWindow = nwindow;
         }
 
+        /// <summary>
+        /// 登録したサブウィンドウを削除します
+        /// </summary>
         void IDataEditing.ClearSubWindow()
         {
             this.SubWindow = null;
         }
 
+        /// <summary>
+        /// サブウィンドウからの編集が完了した際に呼ばれ、編集したデータを受け取ります。
+        /// </summary>
+        /// <param name="newData">編集したデータ</param>
+        /// <exception cref="ArgumentNullException">指定したデータがnullだった場合</exception>
         void IDataEditing.CommitNewData(ACObject newData)
         {
             var cnewData = (CLASS)newData;
@@ -103,8 +156,17 @@ namespace AutoCoder
 
         void IDataEditing.OpenCreateWindow(ACObject targetdata)
         {
-            /*var cTargetdata = (CLASS)targetdata;
-            if (cTargetdata == null) throw new ArgumentNullException();*/
+            var iself = (IDataEditing)this;
+            var cTargetdata = (CLASS)targetdata;
+            if (cTargetdata == null) throw new ArgumentNullException();
+            if (this.LB_classes.SelectedIndex == -1) throw new Error("インデックスが指定されていません。");
+            var nwindow = new CreateClsWindow(
+                this,
+                cTargetdata,
+                this.LB_classes.SelectedIndex
+                );
+            iself.SetSubWindow(nwindow);
+            nwindow.Show();
             
         }
 
