@@ -103,25 +103,23 @@ namespace AutoCoder
                 switch (this.TargetCls.AccessLevel)
                 {
                     case EAccessLevel.PUBLIC:
+                        this.RB_public.IsChecked = true;
                         break;
 
                     case EAccessLevel.PRIVATE:
+                        this.RB_private.IsChecked = true;
                         break;
 
                     case EAccessLevel.PROTECTED:
-                        break;
 
                     case EAccessLevel.INTERNAL:
-                        break;
 
                     case EAccessLevel.PROTECTED_INTERNAL:
-                        break;
 
                     case EAccessLevel.PRIVATE_PROTECTED:
-                        break;
 
                     default:
-                        break;
+                        throw new Error("これらの設定は許可されていません．");
                 }
             }
             else
