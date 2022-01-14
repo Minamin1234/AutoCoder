@@ -58,10 +58,12 @@
     <Compile Include="Components\ACObject.cs" />
     <Compile Include="Components\CLASS.cs" />
     <Compile Include="Components\DataControl.cs" />
+    <Compile Include="Components\EAccessLevel.cs" />
     <Compile Include="Components\EditProperty.cs" />
     <Compile Include="Components\Error.cs" />
     <Compile Include="Components\ErrorHandler.cs" />
     <Compile Include="Components\IDataEditing.cs" />
+    <Compile Include="Components\Interface.cs" />
     <Compile Include="Components\Namespace.cs" />
     <Compile Include="Components\PrimitiveComponent.cs" />
     <Compile Include="Components\Project.cs" />

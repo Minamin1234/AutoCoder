@@ -13,6 +13,10 @@ namespace AutoCoder
             get { return this.Name == "ACObject" ? "CLASS" : this.Name; }
             set { this.Name = value; }
         }
+        public EAccessLevel AccessLevel = EAccessLevel.PUBLIC;
+        public bool IsStatic = false;
+        public CLASS Parent = null;
+        public List<Interface> Interfaces = new List<Interface>();
         public List<CLASS> Classes = new List<CLASS>();
         public CLASS() { }
         public override string ToString()
