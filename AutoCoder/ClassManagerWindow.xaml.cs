@@ -15,18 +15,37 @@ using System.Windows.Shapes;
 namespace AutoCoder
 {
     /// <summary>
-    /// ClassManagerWindow.xaml の相互作用ロジック
+    /// クラスデータを管理するウィンドウ
     /// </summary>
     public partial class ClassManagerWindow : Window,IDataEditing
     {
+        /// <summary>
+        /// このウィンドウを所有するメインウィンドウ
+        /// </summary>
         public MainWindow WHandler = null;
+        /// <summary>
+        /// 管理対象のクラスデータが含まれる名前空間データ
+        /// </summary>
         public Namespace CurrentFile = null;
+        /// <summary>
+        /// このウィンドウが所有するサブウィンドウ
+        /// </summary>
         protected Window SubWindow = null;
+        /// <summary>
+        /// この方法での初期化は推奨されません。
+        /// </summary>
         public ClassManagerWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 管理対象のクラスデータリストが含まれる名前空間データを渡し，このウィンドウを所有するウィンドウを
+        /// 指定します．
+        /// </summary>
+        /// <param name="TargetFile">管理対象のクラスデータリストが含まれる名前空間データ</param>
+        /// <param name="whandler">このウィンドウを所有するウィンドウ</param>
+        /// <exception cref="ArgumentNullException">指定したどちらかの値がnullだった場合</exception>
         public ClassManagerWindow(Namespace TargetFile,MainWindow whandler)
         {
             InitializeComponent();
