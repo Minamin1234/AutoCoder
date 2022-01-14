@@ -114,7 +114,7 @@ namespace AutoCoder
                     case EAccessLevel.INTERNAL:
                         break;
 
-                    case EAccessLevel.PRPTECTED_INTERNAL:
+                    case EAccessLevel.PROTECTED_INTERNAL:
                         break;
 
                     case EAccessLevel.PRIVATE_PROTECTED:
