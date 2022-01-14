@@ -109,6 +109,11 @@ namespace AutoCoder
             return true;
         }
 
+        public bool OpenClsMngrWindow()
+        {
+            return true;
+        }
+
 
         /// <summary>
         /// ウィンドウ内のどれかのボタンが押された時
@@ -119,13 +124,17 @@ namespace AutoCoder
         {
             var CurrentButton = (Button)sender;
 
-            if(CurrentButton.Name == B_NmspMnger.Name)
+            if(CurrentButton.Name == this.B_NmspMnger.Name)
             {
                 try { this.OpenNmspMngrWindow(); }
                 catch (Error E)
                 {
                     MessageBox.Show(E.Message, "エラー", default, MessageBoxImage.Information);
                 }
+            }
+            else if(CurrentButton.Name == this.B_classmanager.Name)
+            {
+
             }
         }
     }

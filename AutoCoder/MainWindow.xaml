@@ -12,7 +12,7 @@
         <Button x:Name="B_NmspMnger" Content="Namespace Manager..." HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="386" FontSize="16" Height="27" Click="B_Clicked"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="Class:" VerticalAlignment="Top" FontSize="18" Width="105" Height="27"/>
         <ComboBox x:Name="CB_class" HorizontalAlignment="Left" Margin="120,106,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
-        <Button x:Name="B_classmanager" Content="Class Manager..." HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="386" FontSize="16" Height="27"/>
+        <Button x:Name="B_classmanager" Content="Class Manager..." HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="386" FontSize="16" Height="27" Click="B_Clicked"/>
         <TextBlock x:Name="T_fuinction" HorizontalAlignment="Left" Margin="401,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Width="100" Height="27" RenderTransformOrigin="0.582,-0.031"><Run Text="Function"/><Run Text=":"/></TextBlock>
         <ComboBox x:Name="CB_function" HorizontalAlignment="Left" Margin="506,42,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
         <Button x:Name="B_FncMngr" Content="Function Manager..." HorizontalAlignment="Left" Margin="401,74,0,0" VerticalAlignment="Top" Width="381" FontSize="16" Height="27"/>
