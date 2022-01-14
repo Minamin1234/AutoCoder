@@ -26,6 +26,9 @@
         <ListBox x:Name="LB_classes" HorizontalAlignment="Left" Height="154" Margin="533,255,0,0" VerticalAlignment="Top" Width="256"/>
         <TextBlock x:Name="T_classes" HorizontalAlignment="Left" Margin="533,207,0,0" TextWrapping="Wrap" Text="Classes" VerticalAlignment="Top" FontSize="14" Height="23" Width="256"/>
         <Button x:Name="B_classmanager" Content="Class Manager..." HorizontalAlignment="Left" Margin="534,230,0,0" VerticalAlignment="Top" Width="256" Click="B_Clicked"/>
+        <ListBox x:Name="LB_interfaces" HorizontalAlignment="Left" Height="144" Margin="533,58,0,0" VerticalAlignment="Top" Width="256"/>
+        <TextBlock x:Name="T_interfaces" HorizontalAlignment="Left" Margin="534,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="23" Width="256"><Run Language="ja-jp" Text="Interfaces"/></TextBlock>
+        <Button x:Name="B_interfacemanager" Content="Interface Manager..." HorizontalAlignment="Left" Margin="534,33,0,0" VerticalAlignment="Top" Width="256" Click="B_Clicked"/>
 
     </Grid>
 </Window>

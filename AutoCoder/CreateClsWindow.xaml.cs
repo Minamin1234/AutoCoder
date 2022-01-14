@@ -99,6 +99,30 @@ namespace AutoCoder
             {
                 this.TB_classname.Text = this.TargetCls.ClassName;
                 this.LB_classes.ItemsSource = this.TargetCls.Classes;
+                this.LB_interfaces.ItemsSource = this.TargetCls.Interfaces;
+                switch (this.TargetCls.AccessLevel)
+                {
+                    case EAccessLevel.PUBLIC:
+                        break;
+
+                    case EAccessLevel.PRIVATE:
+                        break;
+
+                    case EAccessLevel.PROTECTED:
+                        break;
+
+                    case EAccessLevel.INTERNAL:
+                        break;
+
+                    case EAccessLevel.PRPTECTED_INTERNAL:
+                        break;
+
+                    case EAccessLevel.PRIVATE_PROTECTED:
+                        break;
+
+                    default:
+                        break;
+                }
             }
             else
             {
