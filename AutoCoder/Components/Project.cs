@@ -24,7 +24,10 @@ namespace AutoCoder
     {
         public string Title = "Project";
         public List<SourceFile> Files = new List<SourceFile>();
-        public Project() { }
+        public Project()
+        {
+            this.CreateNewFile();
+        }
         /// <summary>
         /// プロジェクトに空のファイルを作成し、リストに追加します。
         /// </summary>

@@ -103,7 +103,7 @@ namespace AutoCoder
             }
             else
             {
-                this.TB_Name.Text = this.TargetNmsp.Name;
+                this.TB_Name.Text = this.TargetNmsp.NamespaceName;
                 this.LB_Nmsps.ItemsSource = this.TargetNmsp.Namespaces;
             }
         }
@@ -204,7 +204,7 @@ namespace AutoCoder
 
             if(currentbutton.Name == B_OK.Name)
             {
-                this.TargetNmsp.Name =
+                this.TargetNmsp.NamespaceName =
                     this.TB_Name.Text;
                 if(this.LB_Nmsps.ItemsSource != null)
                 {

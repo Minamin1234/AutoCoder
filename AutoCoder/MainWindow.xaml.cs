@@ -32,12 +32,13 @@ namespace AutoCoder
         {
             InitializeComponent();
             
-            //
-            CurrentProject.CreateNewFile();
-            var nnmsp = new Namespace("Sample", new List<Namespace>());
-            CurrentProject.Files[0].Namespaces.Add(nnmsp);
-            var sflist = new ObservableCollection<SourceFile>(this.CurrentProject.Files);
-            this.CB_sourcefile.ItemsSource = sflist;
+            //var nnmsp = new Namespace("Sample", new List<Namespace>());
+            //CurrentProject.Files[0].Namespaces.Add(nnmsp);
+            //var sflist = new ObservableCollection<SourceFile>(this.CurrentProject.Files);
+            //this.CB_sourcefile.ItemsSource = sflist;
+            this.CB_sourcefile.ItemsSource = this.CurrentProject.Files;
+            var nmsps = this.CB_sourcefile.ItemsSource.Cast<SourceFile>();
+            this.CB_namespace.ItemsSource = nmsps.ElementAt(0).Namespaces;
             this.WinManager = new WindowManager(this);
             this.Load();
         }
@@ -111,6 +112,19 @@ namespace AutoCoder
 
         public bool OpenClsMngrWindow()
         {
+            if (this.HasSubWindow == true) return false;
+            var target = (Namespace)this.CB_namespace.SelectedItem;
+            if (target == null) throw new Error("対象のデータが選択されていません．");
+            try
+            {
+                var nwindow = new ClassManagerWindow(target, this);
+                var iself = (IDataEditing)this;
+                iself.SetSubWindow(nwindow);
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("対象のファイルがnullでした。", "エラー", default, MessageBoxImage.Error);
+            }
             return true;
         }
 
@@ -134,7 +148,7 @@ namespace AutoCoder
             }
             else if(CurrentButton.Name == this.B_classmanager.Name)
             {
-
+                this.OpenClsMngrWindow();
             }
         }
     }

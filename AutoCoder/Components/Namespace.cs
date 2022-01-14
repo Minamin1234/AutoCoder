@@ -21,17 +21,26 @@ namespace AutoCoder
     /// </summary>
     public class Namespace : ACObject
     {
-        public string Name = "Nmsp";
+        public string NamespaceName
+        {
+            get { return this.Name == "ACObject" ? "Nmsp" : this.Name; }
+            set { this.Name = value; }
+        }
         public List<Namespace> Namespaces = new List<Namespace>();
         public List<CLASS> Classes = new List<CLASS>();
         public Namespace()
         {
+        }
 
+        public Namespace(string name)
+        {
+            this.NamespaceName = name;
+            this.Namespaces.Add(new Namespace());
         }
 
         public Namespace(string name, IEnumerable<Namespace> Nmsps)
         {
-            this.Name = name;
+            this.NamespaceName = name;
             foreach (var itm in Nmsps)
             {
                 if (itm == null) throw new Error("new Namespace():名前空間のリスト内にnullが含まれています。");
@@ -42,14 +51,14 @@ namespace AutoCoder
         public Namespace(string name,IEnumerable<Namespace> Nmsps,IEnumerable<CLASS> Clses)
         {
             if (Nmsps == null || Clses == null) throw new ArgumentNullException();
-            this.Name = name;
+            this.NamespaceName = name;
             this.Namespaces = new List<Namespace>(Nmsps);
             this.Classes = new List<CLASS>(Clses);
         }
 
         public override string ToString()
         {
-            return this.Name;
+            return this.NamespaceName;
         }
     }
 }

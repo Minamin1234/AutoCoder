@@ -24,7 +24,10 @@ namespace AutoCoder
     {
         public string FileName = "File";
         public List<Namespace> Namespaces = new List<Namespace>();
-        public SourceFile() { }
+        public SourceFile()
+        {
+            this.Namespaces.Add(new Namespace());
+        }
         public override string ToString()
         {
             return this.FileName;
