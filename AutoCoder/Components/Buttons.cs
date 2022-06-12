@@ -34,4 +34,24 @@ namespace AutoCoder
             this.VerticalAlignment = VerticalAlignment.Top;
         }
     }
+
+    public partial class B_AddExec : Button
+    {
+        public B_AddExec()
+        {
+            this.Content = "Add Exec";
+            this.HorizontalAlignment = HorizontalAlignment.Left;
+            this.VerticalAlignment = VerticalAlignment.Top;
+        }
+    }
+
+    public partial class B_TargetManager : Button
+    {
+        public B_TargetManager()
+        {
+            this.Content = "Target Manager";
+            this.HorizontalAlignment = HorizontalAlignment.Left;
+            this.VerticalAlignment = VerticalAlignment.Top;
+        }
+    }
 }

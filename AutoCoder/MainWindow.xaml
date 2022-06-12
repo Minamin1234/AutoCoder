@@ -8,8 +8,14 @@
         Title="MainWindow" Height="450" Width="800" WindowStyle="ToolWindow">
     <Grid>
         <Button x:Name="B_Close" Content="X" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="25" Width="25"/>
-        <local:B_LoadProject HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="166"/>
-        <local:B_NewProject HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="166"/>
+        <local:B_LoadProject HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="85"/>
+        <local:B_NewProject HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="85"/>
+        <ListBox x:Name="LB_Explorer" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,96,10,0" HorizontalAlignment="Right" Width="175" VerticalAlignment="Top" Height="159"/>
+        <ListBox x:Name="LB_Editor" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="247,96,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="328" Width="352"/>
+        <ListBox x:Name="LB_Inspector" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,260,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="164" Width="175"/>
+        <ListBox x:Name="LB_TargetFunc" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,96,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="328" Width="209"/>
+        <local:B_AddExec HorizontalAlignment="Left" Margin="247,71,0,0" VerticalAlignment="Top" Width="352"/>
+        <local:B_TargetManager HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="209"/>
 
     </Grid>
 </Window>
