@@ -8,16 +8,8 @@
         Title="MainWindow" Height="450" Width="800" WindowStyle="ToolWindow">
     <Grid>
         <Button x:Name="B_Close" Content="X" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="25" Width="25"/>
-        <ListBox x:Name="LB_Menu" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,5,0,0" RenderTransformOrigin="0.5,0.5" Width="401" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.047"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
+        <local:B_LoadProject HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="166"/>
+        <local:B_NewProject HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="166"/>
 
     </Grid>
 </Window>
