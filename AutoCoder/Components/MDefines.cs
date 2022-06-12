@@ -15,10 +15,9 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MProject : MObject
+    public partial class MDefines : MObject
     {
-        public string ProjectName = "NonTitle";
-        public MProject()
+        public MDefines()
         {
 
         }

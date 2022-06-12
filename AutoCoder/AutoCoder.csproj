@@ -64,6 +64,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Buttons.cs" />
+    <Compile Include="Components\MDefines.cs" />
+    <Compile Include="Components\MNamespace.cs" />
+    <Compile Include="Components\MObject.cs" />
+    <Compile Include="Components\MProject.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
