@@ -15,10 +15,9 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MExec : MDefines
+    public partial class MType : MDefines
     {
-        protected List<MType> Args;
-        protected string ExecutionName
+        protected string TypeName
         {
             get
             {
@@ -30,18 +29,9 @@ namespace AutoCoder
             }
         }
 
-        public MExec()
+        public MType()
         {
-            this.Name = "exec";
-        }
-
-        public string Generate_CallExec()
-        {
-            string Res = "";
-            Res += this.ExecutionName;
-
-            Res += this.LINE_END;
-            return "";
+            this.TypeName = "type";
         }
     }
 }

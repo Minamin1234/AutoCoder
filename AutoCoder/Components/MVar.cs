@@ -15,33 +15,17 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MExec : MDefines
+    public partial class MVer : MDefines
     {
-        protected List<MType> Args;
-        protected string ExecutionName
+        protected string VerName
         {
-            get
-            {
-                return this.Name;
-            }
-            set
-            {
-                this.Name = value;
-            }
+            get { return this.Name; }
+            set { this.Name = value; }
         }
 
-        public MExec()
+        public MVer()
         {
             this.Name = "exec";
-        }
-
-        public string Generate_CallExec()
-        {
-            string Res = "";
-            Res += this.ExecutionName;
-
-            Res += this.LINE_END;
-            return "";
         }
     }
 }

@@ -15,24 +15,13 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MFunction : MDefines
+    public partial class MArg : MDefines
     {
-        protected List<MExec> Execs;
-        protected List<MType> Args;
-        protected string FunctionName
+        protected string ArgName
         {
-            get
-            {
-                return this.Name;
-            }
-            set
-            {
-                this.Name = value;
-            }
+            get { return this.Name; }
+            set { this.Name = value; }
         }
-        public MFunction()
-        {
-            this.FunctionName = "function";
-        }
+        public MArg() { }
     }
 }
