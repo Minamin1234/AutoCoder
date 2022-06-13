@@ -15,11 +15,12 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MNamespace : MDefines
+    public partial class MClass : MDefines
     {
-        public MNamespace()
+        public List<MFunction> Functions;
+        public MClass()
         {
-            this.Name = "namespace";
+            this.Name = "class";
         }
     }
 }

@@ -15,11 +15,23 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MNamespace : MDefines
+    public partial class MExec : MDefines
     {
-        public MNamespace()
+        protected string ExecutionName
         {
-            this.Name = "namespace";
+            get
+            {
+                return this.Name;
+            }
+            set
+            {
+                this.Name = value;
+            }
+        }
+        protected List<string> Args;
+        public MExec()
+        {
+            this.Name = "exec";
         }
     }
 }

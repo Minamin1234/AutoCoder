@@ -15,11 +15,23 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MNamespace : MDefines
+    public partial class MFunction : MDefines
     {
-        public MNamespace()
+        protected List<MExec> Execs;
+        protected string FunctionName
         {
-            this.Name = "namespace";
+            get
+            {
+                return this.Name;
+            }
+            set
+            {
+                this.Name = value;
+            }
+        }
+        public MFunction()
+        {
+            this.FunctionName = "function";
         }
     }
 }

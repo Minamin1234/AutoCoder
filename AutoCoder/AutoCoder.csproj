@@ -64,7 +64,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Buttons.cs" />
+    <Compile Include="Components\MClass.cs" />
     <Compile Include="Components\MDefines.cs" />
+    <Compile Include="Components\MExec.cs" />
+    <Compile Include="Components\MFunction.cs" />
     <Compile Include="Components\MNamespace.cs" />
     <Compile Include="Components\MObject.cs" />
     <Compile Include="Components\MProject.cs" />
