@@ -15,17 +15,18 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MVer : MDefines
+    public partial class MVar : MDefines
     {
-        protected string VerName
+        public MType VarType;
+        public string VerName
         {
             get { return this.Name; }
             set { this.Name = value; }
         }
 
-        public MVer()
+        public MVar()
         {
-            this.Name = "exec";
+            this.Name = "type";
         }
     }
 }

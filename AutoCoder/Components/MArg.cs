@@ -17,11 +17,30 @@ namespace AutoCoder
 {
     public partial class MArg : MDefines
     {
+        protected MVar Variable;
+        
         protected string ArgName
         {
             get { return this.Name; }
             set { this.Name = value; }
         }
+        protected bool IsExpr = false;
         public MArg() { }
+
+        //定義時の引数定義を文字列として返します。
+        public string GenerateArgDefine()
+        {
+            string Res = "";
+            Res += Variable.VarType.TypeName;
+            Res += " ";
+            Res += this.ArgName;
+            return Res;
+        }
+
+        public string GenerateEntity()
+        {
+            if (this.IsExpr) ;
+            return this.ArgName;
+        }
     }
 }

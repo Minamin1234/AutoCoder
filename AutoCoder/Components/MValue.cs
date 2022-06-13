@@ -15,23 +15,11 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MType : MDefines
+    public partial class MValue : MObject
     {
-        public string TypeName
+        public MValue()
         {
-            get
-            {
-                return this.Name;
-            }
-            set
-            {
-                this.Name = value;
-            }
-        }
 
-        public MType()
-        {
-            this.TypeName = "type";
         }
     }
 }

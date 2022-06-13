@@ -18,7 +18,7 @@ namespace AutoCoder
     public partial class MFunction : MDefines
     {
         protected List<MExec> Execs;
-        protected List<MType> Args;
+        protected List<MArg> Args;
         protected string FunctionName
         {
             get
@@ -30,9 +30,15 @@ namespace AutoCoder
                 this.Name = value;
             }
         }
+
         public MFunction()
         {
             this.FunctionName = "function";
+        }
+
+        public string Generate_Function(List<MVar> CallArgs)
+        {
+            return "";
         }
     }
 }

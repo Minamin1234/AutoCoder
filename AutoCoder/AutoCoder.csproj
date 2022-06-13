@@ -66,13 +66,16 @@
     <Compile Include="Components\Buttons.cs" />
     <Compile Include="Components\MArg.cs" />
     <Compile Include="Components\MClass.cs" />
+    <Compile Include="Components\MConstVal.cs" />
     <Compile Include="Components\MDefines.cs" />
     <Compile Include="Components\MExec.cs" />
+    <Compile Include="Components\MExpr.cs" />
     <Compile Include="Components\MFunction.cs" />
     <Compile Include="Components\MNamespace.cs" />
     <Compile Include="Components\MObject.cs" />
     <Compile Include="Components\MProject.cs" />
     <Compile Include="Components\MType.cs" />
+    <Compile Include="Components\MValue.cs" />
     <Compile Include="Components\MVar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
