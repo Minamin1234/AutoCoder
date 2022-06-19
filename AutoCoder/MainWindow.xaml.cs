@@ -23,6 +23,19 @@ namespace AutoCoder
         public MainWindow()
         {
             InitializeComponent();
+            MArg arg1 = new MArg();
+            arg1.SetArgName("x");
+            arg1.SetType(E_TYPE.MINT);
+            arg1.AttatchValue("10");
+            MArg arg2 = new MArg();
+            arg2.SetArgName("y");
+            arg2.SetType(E_TYPE.MINT);
+            arg2.AttatchValue("20");
+
+            MExec exec = new MExec();
+            exec.AddArg(arg1);
+            exec.AddArg(arg2);
+            Console.WriteLine(exec.Generate_CallExec());
         }
     }
 }

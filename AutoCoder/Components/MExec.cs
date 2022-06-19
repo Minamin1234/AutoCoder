@@ -17,7 +17,7 @@ namespace AutoCoder
 {
     public partial class MExec : MDefines
     {
-        protected List<MArg> Args;
+        protected List<MArg> Args = new List<MArg>();
         protected string ExecutionName
         {
             get
@@ -35,19 +35,30 @@ namespace AutoCoder
             this.Name = "exec";
         }
 
-        public string Generate_CallExec(List<MArg> CallArgs)
+        /// <summary>
+        /// 引数を追加します．
+        /// </summary>
+        /// <param name="newarg">追加する引数</param>
+        public void AddArg(MArg newarg)
+        {
+            this.Args.Add(newarg);
+        }
+
+        public string Generate_CallExec()
         {
             string Res = "";
             Res += this.ExecutionName;
             Res += this.SMALL_BEGIN;
-            foreach(var v in CallArgs)
+            foreach(var v in this.Args)
             {
                 //Res += v.VerName;
+                Res += v.GenerateEntity();
                 Res += this.COMMA;
             }
+            Res = Res.Remove(Res.Count() - 1,1);
             Res += this.SMALL_END;
             Res += this.LINE_END;
-            return "";
+            return Res;
         }
     }
 }
