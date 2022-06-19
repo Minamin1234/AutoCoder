@@ -15,8 +15,15 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MConstVal : MValue
+    public enum E_TYPE
     {
-
+        MOBJECT,
+        MBOOL,
+        MINT,
+        MFLOAT,
+        MSTRING,
+        MCHAR,
+        MENUM,
+        MSTRUCT
     }
 }

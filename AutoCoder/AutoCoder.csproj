@@ -64,9 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Buttons.cs" />
+    <Compile Include="Components\E_Type.cs" />
     <Compile Include="Components\MArg.cs" />
     <Compile Include="Components\MClass.cs" />
-    <Compile Include="Components\MConstVal.cs" />
     <Compile Include="Components\MDefines.cs" />
     <Compile Include="Components\MExec.cs" />
     <Compile Include="Components\MExpr.cs" />

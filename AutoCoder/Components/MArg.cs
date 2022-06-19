@@ -15,9 +15,11 @@ using System.Windows.Shapes;
 
 namespace AutoCoder
 {
-    public partial class MArg : MDefines
+    public partial class MArg : MValue
     {
-        protected MVar Variable;
+        //protected MVar Variable;
+        protected E_TYPE Type = E_TYPE.MINT;
+        protected string Value = "";
         
         protected string ArgName
         {
@@ -30,16 +32,20 @@ namespace AutoCoder
         //定義時の引数定義を文字列として返します。
         public string GenerateArgDefine()
         {
-            string Res = "";
-            Res += Variable.VarType.TypeName;
-            Res += " ";
-            Res += this.ArgName;
-            return Res;
+            //string Res = "";
+            //Res += Variable.VarType.TypeName;
+            //Res += " ";
+            //Res += this.ArgName;
+            //return Res;
+            string res = "";
+            res += this.GetTypeName(this.Type);
+            res += " ";
+            res += this.ArgName;
+            return res;
         }
 
         public string GenerateEntity()
         {
-            if (this.IsExpr) ;
             return this.ArgName;
         }
     }
