@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Buttons.cs" />
+    <Compile Include="Components\E_AccessLevel.cs" />
     <Compile Include="Components\E_Type.cs" />
     <Compile Include="Components\MArg.cs" />
     <Compile Include="Components\MClass.cs" />
